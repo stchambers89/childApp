@@ -1,1 +1,1 @@
-Hello World - you probably shouldn't make changes directly in the file like this!
+Hello World - you probably shouldn't make changes directly in the file like this! Now I'll commit and try to get a merge conflict
