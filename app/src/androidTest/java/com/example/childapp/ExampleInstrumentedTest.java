@@ -24,4 +24,9 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.example.childapp", appContext.getPackageName());
     }
+
+    @Test
+    public void addition() {
+        assertEquals(4, 2 +2);
+    }
 }
