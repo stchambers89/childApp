@@ -29,6 +29,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void addition() {
         assertEquals(4, 2 +2);
-       // Log i()
+       //// Log i()
     }
 }
