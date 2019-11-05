@@ -15,4 +15,10 @@ public class MainActivity extends AppCompatActivity {
     // Ryan text...
     //We can do this!
 
+    /* add file
+    commit -m ""
+    pull
+    push
+     */
+
 }
