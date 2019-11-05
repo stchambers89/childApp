@@ -1,6 +1,7 @@
 package com.example.childapp;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -28,5 +29,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void addition() {
         assertEquals(4, 2 +2);
+       // Log i()
     }
 }
