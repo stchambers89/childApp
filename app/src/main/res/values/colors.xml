@@ -3,4 +3,21 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <item name = "blue" type="color">#0066ff</item>
+    <item name = "purple" type="color">#b300b3</item>
+    <item name = "green" type="color">#00b300</item>
+    <item name = "red" type="color">#ff0000</item>
+    <item name = "orange" type="color">#ffa500</item>
+    <item name = "yellow" type="color">#ffff66</item>
+
+    <integer-array name="shapeColors">
+        <item>@color/blue</item>
+        <item>@color/purple</item>
+        <item>@color/green</item>
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+    </integer-array>
+
 </resources>
