@@ -4,13 +4,17 @@ import android.graphics.Color;
 
 import java.util.Random;
 
-import static androidx.core.graphics.drawable.IconCompat.getResources;
 
 public class Circle extends Item {
 
+    private ShapeName shape;
+
     // DEFAULT
     public Circle() {
-        super("circle", "blue");
+        super(null, "blue");
+        shape = ShapeName.Circle;
+
+
     }
 
 

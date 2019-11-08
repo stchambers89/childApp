@@ -5,11 +5,11 @@ import android.graphics.Color;
 public abstract class Item {
 
     // private member
-    private String _name;
+    private ShapeName _shape;
     private String _color;
 
-    public Item(String name, String color) {
-        _name = name;
+    public Item(ShapeName shape, String color) {
+        _shape = shape;
         _color = color;
     }
 
@@ -17,8 +17,8 @@ public abstract class Item {
     abstract void draw();
 
     // GETTERS
-    public String getName() {
-        return _name;
+    public ShapeName getShape() {
+        return _shape;
     }
 
     public String getColor() {

@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public static int initiateGameModeOne(View view) {
+   /* public static int initiateGameModeOne(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
         Game game = new Game(1);
         game.run();
@@ -32,5 +32,5 @@ public class MainActivity extends AppCompatActivity {
         Game game = new Game(3);
         game.run();
         return game.getGameMode();
-    }
+    }*/
 }
