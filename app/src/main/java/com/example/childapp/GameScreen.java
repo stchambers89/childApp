@@ -11,4 +11,5 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
     }
+    // Here's our main game activity
 }
