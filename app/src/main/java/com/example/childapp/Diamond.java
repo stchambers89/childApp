@@ -1,9 +1,9 @@
 package com.example.childapp;
 
-public class Diamond extends Item {
+public class Diamond extends Shape {
 
     public Diamond() {
-        super("diamond", "orange");
+        super(Name.Diamond, SelectedColor.Orange);
     }
 
 

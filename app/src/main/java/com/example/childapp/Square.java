@@ -2,12 +2,12 @@ package com.example.childapp;
 
 import android.graphics.Color;
 
-public class Square extends Item {
+public class Square extends Shape {
 
 
     // DEFAULT CONSTRUCTOR
     public Square() {
-        super("square", "red");
+        super(Name.Square, SelectedColor.Purple);
     }
 
     @Override

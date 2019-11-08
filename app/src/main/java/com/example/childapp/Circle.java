@@ -12,7 +12,6 @@ public class Circle extends Shape {
     // DEFAULT
     public Circle() {
         super(Name.Circle, SelectedColor.Blue);
-        //shape = Name.Circle;
 
         //Need getcolor() to pick random
         //Maybe keep all colors random at create time, then when we add them to data struc

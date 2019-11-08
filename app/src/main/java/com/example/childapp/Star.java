@@ -1,9 +1,9 @@
 package com.example.childapp;
 
-public class Star extends Item {
+public class Star extends Shape {
 
     public Star() {
-        super("star", "red");
+        super(Name.Star, SelectedColor.Green);
     }
 
     @Override
