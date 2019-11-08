@@ -14,7 +14,9 @@ public class Circle extends Item {
         super(null, "blue");
         shape = ShapeName.Circle;
 
-
+        //Need getcolor() to pick random
+        //Maybe keep all colors random at create time, then when we add them to data struc
+        //we change one of the colors depending on "correct shape"
     }
 
 
