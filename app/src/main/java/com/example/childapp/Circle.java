@@ -5,14 +5,14 @@ import android.graphics.Color;
 import java.util.Random;
 
 
-public class Circle extends Item {
+public class Circle extends Shape {
 
-    private ShapeName shape;
+    //private Name shape;
 
     // DEFAULT
     public Circle() {
-        super(null, "blue");
-        shape = ShapeName.Circle;
+        super(Name.Circle, SelectedColor.Blue);
+        //shape = Name.Circle;
 
         //Need getcolor() to pick random
         //Maybe keep all colors random at create time, then when we add them to data struc

@@ -1,5 +1,5 @@
 package com.example.childapp;
 
-public enum Color {
+public enum SelectedColor {
     Red, Yellow, Blue, Green, Orange, Purple
 }
