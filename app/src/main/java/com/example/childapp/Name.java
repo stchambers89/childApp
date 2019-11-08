@@ -1,10 +1,5 @@
 package com.example.childapp;
 
-public enum ShapeName {
+public enum Name {
     Circle, Square, Diamond, Triangle, Star, Heart;
-
-
-    void getShape() {
-
-    }
 }
