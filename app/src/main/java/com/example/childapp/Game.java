@@ -12,6 +12,11 @@ public class Game {
         _shapes = new ArrayList<Shape>();
     }
 
+    Game(int gameMode, ArrayList<Shape> shapes) {
+        _gameMode = gameMode;
+        _shapes = shapes;
+    }
+
     // Getter for our game mode
     public int get_gameMode() { return _gameMode; }
     // Getter for our list of shapes
