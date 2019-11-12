@@ -34,3 +34,30 @@ public class MainActivity extends AppCompatActivity {
         return game.getGameMode();
     }*/
 }
+
+
+
+/*
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences achievements = getSharedPreferences("ACHIEVEMENTS", MODE_PRIVATE);
+        SharedPreferences.Editor editor = achievements.edit();
+
+
+        SharedPreferences achievements = getSharedPreferences("ACHIEVEMENTS", MODE_PRIVATE);
+
+
+        editor.putInt("gameMode", _game.get_gameMode());
+
+        Gson gson = new Gson();
+        gson.toJson(_game.get_shapes());
+
+        editor.putString("shapes", gson.toString());
+
+    }
+
+
+ */
