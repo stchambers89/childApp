@@ -9,22 +9,22 @@
 
     <ImageButton
         android:id="@+id/shape_game"
-        android:layout_width="0dp"
-        android:layout_height="85dp"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="24dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/shape_button" />
 
     <ImageButton
         android:id="@+id/color_game"
-        android:layout_width="0dp"
-        android:layout_height="85dp"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
@@ -37,8 +37,8 @@
 
     <ImageButton
         android:id="@+id/shape_and_color_game"
-        android:layout_width="0dp"
-        android:layout_height="85dp"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
@@ -50,11 +50,13 @@
         app:srcCompat="@drawable/shape_and_color_button" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/achievements"
         android:layout_width="115dp"
         android:layout_height="125dp"
+        android:layout_marginTop="88dp"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/star_big_on"
-        tools:layout_editor_absoluteY="455dp" />
+        app:layout_constraintTop_toBottomOf="@+id/shape_and_color_game"
+        app:srcCompat="@drawable/trophy" />
 </androidx.constraintlayout.widget.ConstraintLayout>

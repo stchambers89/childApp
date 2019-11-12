@@ -9,7 +9,7 @@
 
     <ImageButton
         android:id="@+id/shape_game"
-        android:layout_width="380dp"
+        android:layout_width="280dp"
         android:layout_height="85dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
@@ -23,10 +23,10 @@
 
     <ImageButton
         android:id="@+id/color_game"
-        android:layout_width="380dp"
+        android:layout_width="280dp"
         android:layout_height="85dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,12 +37,14 @@
 
     <ImageButton
         android:id="@+id/shape_and_color_game"
-        android:layout_width="380dp"
-        android:layout_height="85dp"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="108dp"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
