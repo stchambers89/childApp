@@ -18,11 +18,22 @@ public class GameScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         // Create a ViewModel the first time the system calls an activity's onCreate() method.
-        // Re-created activities receive the same MyViewModel instance created by the first activity.
+        // Re-created activities receive the same CustomViewModel instance created by the first activity.
 
         CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
         model.getShapes().observe(this, shapes -> {
             // Update UI
         });
+    }
+
+
+    /**
+     * This callback should use "ViewModel" to handle configuration changes (like screen rotation) and
+     * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
+     * https://developer.android.com/topic/libraries/architecture/saving-states.html
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

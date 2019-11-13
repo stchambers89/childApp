@@ -46,16 +46,6 @@ public class MainActivity extends AppCompatActivity {
         return game.getGameMode();
     }*/
 
-
-    /**
-     * This callback should use "ViewModel" to handle configuration changes (like screen rotation) and
-     * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
-     * https://developer.android.com/topic/libraries/architecture/saving-states.html
-     */
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 }
 
 
