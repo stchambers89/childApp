@@ -20,7 +20,7 @@ public class Game {
     // Getter for our game mode
     public int get_gameMode() { return _gameMode; }
     // Getter for our list of shapes
-    public List<Shape> get_shapes() { return _shapes; }
+    public List<Shape> getShapes() { return _shapes; }
 
     // CREATE SHAPES
     private void createShapes() {
