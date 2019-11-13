@@ -19,6 +19,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         // Create a ViewModel the first time the system calls an activity's onCreate() method.
         // Re-created activities receive the same CustomViewModel instance created by the first activity.
+        // https://developer.android.com/topic/libraries/architecture/viewmodel.html
 
         CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
         model.getShapes().observe(this, shapes -> {
