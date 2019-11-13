@@ -1,10 +1,14 @@
 package com.example.childapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,51 +17,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-   /* public static int initiateGameModeOne(View view) {
+    /**
+     * This method is run when @id "shape_game"'s onClick event is triggered.
+     * This runs the program.
+     * @param view
+     */
+    public void initiateGameModeOne(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
         Game game = new Game(1);
         game.run();
-        return game.getGameMode();
+        //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
 
-    public static int initiateGameModeTwo(View view) {
+
+    // STRETCH CHALLENGE --- OTHER GAME MODES
+    /*public static int initiateGameModeTwo(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
         Game game = new Game(2);
         game.run();
         return game.getGameMode();
     }
 
+    // STRETCH CHALLENGE --- OTHER GAME MODES
     public static int initiateGameModeThree(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
         Game game = new Game(3);
         game.run();
         return game.getGameMode();
     }*/
+
+    
+    /**
+     * This callback should use "ViewModel" to handle configuration changes (like screen rotation) and
+     * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
+     * https://developer.android.com/topic/libraries/architecture/saving-states.html
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }
 
 
 
-/*
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        SharedPreferences achievements = getSharedPreferences("ACHIEVEMENTS", MODE_PRIVATE);
-        SharedPreferences.Editor editor = achievements.edit();
-
-
-        SharedPreferences achievements = getSharedPreferences("ACHIEVEMENTS", MODE_PRIVATE);
-
-
-        editor.putInt("gameMode", _game.get_gameMode());
-
-        Gson gson = new Gson();
-        gson.toJson(_game.get_shapes());
-
-        editor.putString("shapes", gson.toString());
-
-    }
-
-
- */
