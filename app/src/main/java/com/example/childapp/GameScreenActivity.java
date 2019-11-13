@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-public class GameScreen extends AppCompatActivity {
+public class GameScreenActivity extends AppCompatActivity {
 
     Game game;
 
