@@ -5,7 +5,7 @@ import android.graphics.Color;
 import java.util.Random;
 
 
-public class Circle extends Item {
+public class Circle extends Item implements Shape {
 
     //private Name shape;
 
