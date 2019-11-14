@@ -1,6 +1,6 @@
 package com.example.childapp;
 
-public class Star extends Shape {
+public class Star extends Item {
 
     public Star() {
         super(Name.Star, SelectedColor.Green);
