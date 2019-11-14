@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AchievementPage"></activity>
         <activity android:name=".EndingScreenActivity" />
-        <activity android:name=".GameScreen" />
+        <activity android:name=".GameScreenActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

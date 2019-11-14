@@ -13,7 +13,7 @@ import android.view.View;
 
 public class GameScreenActivity extends AppCompatActivity {
 
-    Game game;
+    //Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,11 @@ public class GameScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
 
-        Log.v ("Launcing issues", "This is launching from oncreate in game screen");
+        Log.v ("Launching issues", "This is launching from oncreate in game screen");
         Intent intent = getIntent();
-        String gameMode = intent.getStringExtra(MainActivity.GAME_MODE);
+        int gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
 
-        
+
        // if (gameMode == -1) {
 
         //}
