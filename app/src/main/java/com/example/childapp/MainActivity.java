@@ -3,6 +3,7 @@ package com.example.childapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +11,8 @@ import android.view.View;
  *
  */
 public class MainActivity extends AppCompatActivity {
+
+    public static final String GAME_MODE = "com.example.childapp.GAMEMODE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +27,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void initiateGameModeOne(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
-        Game game = new Game(1);
-        game.run();
+
+
+        Intent intent = new Intent(this, GameScreenActivity.class);
+        int gameMode = 1;
+        intent.putExtra(GAME_MODE, gameMode);
+        startActivity(intent);
+
+
+
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
 

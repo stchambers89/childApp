@@ -12,7 +12,7 @@
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
         android:onClick="initiateGameModeOne"
         android:scaleType="fitCenter"
@@ -51,13 +51,15 @@
         app:srcCompat="@drawable/shape_and_color_button" />
 
     <ImageButton
-        android:id="@+id/achievements"
+        android:id="@+id/achievements_button"
         android:layout_width="115dp"
         android:layout_height="125dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shape_and_color_game"
+        app:layout_constraintTop_toBottomOf="@id/shape_and_color_game"
         app:srcCompat="@drawable/trophy" />
 </androidx.constraintlayout.widget.ConstraintLayout>
