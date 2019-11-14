@@ -28,12 +28,9 @@ public class MainActivity extends AppCompatActivity {
     public void initiateGameModeOne(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
 
-
         Intent intent = new Intent(this, GameScreenActivity.class);
-        intent.putExtra("GAME_MODE", 1);
+        intent.putExtra(GAME_MODE, 1);
         startActivity(intent);
-
-
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
