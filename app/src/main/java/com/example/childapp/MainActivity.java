@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, GameScreenActivity.class);
-        int gameMode = 1;
+        String gameMode = "1";
         intent.putExtra(GAME_MODE, gameMode);
         startActivity(intent);
 

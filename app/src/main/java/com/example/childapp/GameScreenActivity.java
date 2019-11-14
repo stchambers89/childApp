@@ -2,13 +2,14 @@ package com.example.childapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.google.gson.Gson;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 public class GameScreenActivity extends AppCompatActivity {
 
@@ -20,12 +21,14 @@ public class GameScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
 
+        Log.v ("Launcing issues", "This is launching from oncreate in game screen");
         Intent intent = getIntent();
-        int gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+        String gameMode = intent.getStringExtra(MainActivity.GAME_MODE);
 
-        if (gameMode == -1) {
+        
+       // if (gameMode == -1) {
 
-        }
+        //}
 
 
 
@@ -35,7 +38,7 @@ public class GameScreenActivity extends AppCompatActivity {
         // Re-created activities receive the same CustomViewModel instance created by the first activity.
         // https://developer.android.com/topic/libraries/architecture/viewmodel.html
 
-        CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
+       /* CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
         model.getShapes().observe(this, shapes -> {
             // Update UI
         });
@@ -47,8 +50,8 @@ public class GameScreenActivity extends AppCompatActivity {
      * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
      * https://developer.android.com/topic/libraries/architecture/saving-states.html
      */
-    @Override
-    protected void onStop() {
-        super.onStop();
+   // @Override
+    //protected void onStop() {
+      //  super.onStop();
     }
 }
