@@ -2,13 +2,13 @@ package com.example.childapp;
 
 //import android.graphics.Color;
 
-public abstract class Shape {
+public abstract class Item {
 
     // private member
     private Name _name;
     private SelectedColor _color;
 
-    public Shape(Name name, SelectedColor color) {
+    public Item(Name name, SelectedColor color) {
         _name = name;
         _color = color;
     }

@@ -2,7 +2,7 @@ package com.example.childapp;
 
 import android.graphics.Color;
 
-public class Square extends Shape {
+public class Square extends Item {
 
 
     // DEFAULT CONSTRUCTOR
