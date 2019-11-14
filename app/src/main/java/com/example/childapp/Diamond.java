@@ -1,6 +1,6 @@
 package com.example.childapp;
 
-public class Diamond extends Item {
+public class Diamond extends Item implements Shape{
 
     public Diamond() {
         super(Name.Diamond, SelectedColor.Orange);
@@ -8,7 +8,7 @@ public class Diamond extends Item {
 
 
     @Override
-    void draw() {
+    public void draw() {
         // stub
     }
 }

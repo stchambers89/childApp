@@ -14,7 +14,7 @@ public abstract class Item {
     }
 
     // pure virtual function
-    abstract void draw();
+    // abstract void draw();
 
     // GETTERS
     public Name getShape() {

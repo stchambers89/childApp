@@ -2,7 +2,7 @@ package com.example.childapp;
 
 import android.graphics.Color;
 
-public class Square extends Item {
+public class Square extends Item implements Shape {
 
 
     // DEFAULT CONSTRUCTOR
@@ -11,7 +11,7 @@ public class Square extends Item {
     }
 
     @Override
-    void draw() {
+    public void draw() {
         // stub
     }
 
