@@ -20,11 +20,11 @@ public class GameScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
-
-        Log.v ("Launching issues", "This is launching from oncreate in game screen");
+    }
+     /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");
         Intent intent = getIntent();
         int gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
-
+*/
 
        // if (gameMode == -1) {
 
@@ -53,5 +53,5 @@ public class GameScreenActivity extends AppCompatActivity {
    // @Override
     //protected void onStop() {
       //  super.onStop();
-    }
+//    }
 }

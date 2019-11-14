@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/shape3"
@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shape2"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/shape2"
@@ -39,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shape1"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/mainShape"
@@ -50,6 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/trophy"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
