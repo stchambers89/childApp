@@ -10,8 +10,8 @@ public class Circle extends Item implements Shape {
     //private Name shape;
 
     // DEFAULT
-    public Circle() {
-        super(Name.Circle, SelectedColor.Blue);
+    public Circle(SelectedColor color) {
+        super(Name.Circle, color);
 
         //Need getcolor() to pick random
         //Maybe keep all colors random at create time, then when we add them to data struc

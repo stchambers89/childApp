@@ -1,11 +1,11 @@
 package com.example.childapp;
 
+
 public class Diamond extends Item implements Shape{
 
-    public Diamond() {
-        super(Name.Diamond, SelectedColor.Orange);
+    public Diamond(SelectedColor color) {
+        super(Name.Diamond, color);
     }
-
 
     @Override
     public void draw() {

@@ -2,8 +2,9 @@ package com.example.childapp;
 
 public class Star extends Item implements Shape {
 
-    public Star() {
-        super(Name.Star, SelectedColor.Green);
+    public Star(SelectedColor color) {
+
+        super(Name.Star, color);
     }
 
     @Override
