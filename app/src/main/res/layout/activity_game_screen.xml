@@ -55,4 +55,15 @@
         app:srcCompat="@drawable/trophy"
         tools:visibility="visible" />
 
+    <Button
+        android:id="@+id/testEndingScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test EndingScreenActivity"
+        android:onClick="testEndingScreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shape2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

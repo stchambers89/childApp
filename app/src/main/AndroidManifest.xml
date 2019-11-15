@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".AchievementPage"></activity>
-        <activity android:name=".EndingScreenActivity" />
+        <activity android:name=".EndingScreenActivity"
+            android:theme="@style/AppTheme.CustomTheme"
+            />
         <activity android:name=".GameScreenActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

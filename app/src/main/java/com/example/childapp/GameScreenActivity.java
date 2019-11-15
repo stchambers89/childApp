@@ -10,16 +10,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 public class GameScreenActivity extends AppCompatActivity {
 
     //Game game;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
-
     }
      /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");
         Intent intent = getIntent();
@@ -54,4 +55,11 @@ public class GameScreenActivity extends AppCompatActivity {
     //protected void onStop() {
       //  super.onStop();
 //    }
+
+
+    public void testEndingScreen(View view) {
+        // simplyt test ending screen
+        Intent intent = new Intent(this, EndingScreenActivity.class);
+        startActivity(intent);
+    }
 }
