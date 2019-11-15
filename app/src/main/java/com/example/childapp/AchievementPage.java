@@ -20,7 +20,7 @@ public class AchievementPage extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.8));
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.85));
 
         // get trophies
         SharedPreferences sharedPref = getSharedPreferences("achievement_file", MODE_PRIVATE);
