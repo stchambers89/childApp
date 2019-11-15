@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".AchievementPage"></activity>
+        <activity android:name=".AchievementPage"
+            android:theme="@style/AppTheme.CustomTheme" >
+        </activity>
         <activity android:name=".EndingScreenActivity"
-            android:theme="@style/AppTheme.CustomTheme"
+            android:theme="@style/AppTheme.CustomTheme2"
             />
         <activity android:name=".GameScreenActivity" />
         <activity android:name=".MainActivity">

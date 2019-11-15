@@ -1,23 +1,31 @@
 package com.example.childapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.gson.Gson;
 
 public class EndingScreenActivity extends AppCompatActivity {
 
     static int numOfTrophies;
+    //ConstraintLayout li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ending_screen);
         numOfTrophies = 0;
 
@@ -28,6 +36,13 @@ public class EndingScreenActivity extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int) (width * 0.8), (int) (height * 0.8));
+
+        //li.setBackgroundColor(Color.RED);
+    }
+
+    public void goHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void endOnStrongNote(View view) {

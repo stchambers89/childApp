@@ -35,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
 
+    public void runAcheivementPage(View view) {
+        Intent intent = new Intent(this, AchievementPage.class);
+        startActivity(intent);
+    }
+
 
     // STRETCH CHALLENGE --- OTHER GAME MODES
     /*public static int initiateGameModeTwo(View view) {
