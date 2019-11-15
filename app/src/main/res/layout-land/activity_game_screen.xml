@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@+id/shape2"
         app:layout_constraintEnd_toStartOf="@+id/mainShape"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/shape3"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mainShape"
         app:layout_constraintTop_toBottomOf="@+id/shape2"
-        tools:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/shape2"
@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/shape3"
         app:layout_constraintEnd_toStartOf="@+id/mainShape"
         app:layout_constraintTop_toBottomOf="@+id/shape1"
-        tools:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/mainShape"
@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/trophy" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"

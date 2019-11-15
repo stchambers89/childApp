@@ -12,6 +12,7 @@
     <item name = "orange" type="color">#ffa500</item>
     <item name = "yellow" type="color">#ffff66</item>
     <item name = "black" type="color">#000000</item>
+    <item name="white" type="color">#FAFCFC</item>
 
 
     <integer-array name="shapeColors">
