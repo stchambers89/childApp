@@ -5,9 +5,8 @@
     android:id="@+id/gamescreen_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="#A7FFEB"
     tools:context=".EndingScreenActivity">
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
