@@ -3,9 +3,11 @@ package com.example.childapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,7 +20,7 @@ import com.google.gson.Gson;
 public class EndingScreenActivity extends AppCompatActivity {
 
     static int numOfTrophies;
-    //ConstraintLayout li;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

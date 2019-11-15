@@ -5,7 +5,7 @@
     android:id="@+id/endingscreen_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A7FFEB"
+    android:background="@drawable/popup"
     tools:context=".EndingScreenActivity">
 
     <Button
