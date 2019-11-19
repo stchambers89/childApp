@@ -42,8 +42,8 @@ public class ShapeFactory {
                 isSecond = true;
             } else {
                 if (isSecond) {
-                    shape = list.get(0);
-                    shape.changeShapeColor(getRandomColor());
+                    shape = getShapeCopy(list.get(0));
+                    //shape.changeShapeColor(getRandomColor());
                     list.add(shape);
                     isSecond = false;
                 } else {
@@ -96,7 +96,7 @@ public class ShapeFactory {
                 isSecond = true;
             } else {
                 if (isSecond) {
-                    shape = list.get(0);
+                    shape = getShapeCopy(list.get(0));
                     list.add(shape);
                     isSecond = false;
                 } else {
@@ -199,6 +199,41 @@ public class ShapeFactory {
         }
         return shape;
     }
+
+
+    /**
+     * Create a copy of a shape
+     */
+    private Shape getShapeCopy(Shape s) {
+        Shape shape;
+        Random r = new Random();
+        int temp = r.nextInt(6);
+
+        switch (s.getShapeName()) {
+            case Circle:
+                shape = (order == 1) ? new Circle(getRandomColor()) : new Circle(s.getShapeColor());
+                break;
+            case Triangle:
+                shape = (order == 1) ? new Triangle(getRandomColor()) : new Triangle(s.getShapeColor());
+                break;
+            case Square:
+                shape = (order == 1) ? new Square(getRandomColor()) : new Square(s.getShapeColor());
+                break;
+            case Star:
+                shape = (order == 1) ? new Star(getRandomColor()) : new Star(s.getShapeColor());
+                break;
+            case Diamond:
+                shape = (order == 1) ? new Diamond(getRandomColor()) : new Diamond(s.getShapeColor());
+                break;
+            case Heart:
+                shape = (order == 1) ? new Heart(getRandomColor()) : new Heart(s.getShapeColor());
+                break;
+            default:
+                shape = (order == 1) ? new Circle(getRandomColor()) : new Circle(s.getShapeColor());
+        }
+        return shape;
+    }
+
 
 
     /**
