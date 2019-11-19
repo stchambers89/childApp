@@ -20,6 +20,9 @@ public class GameScreenActivity extends AppCompatActivity {
 
     //Game game;
     ConstraintLayout li;
+    private int gameMode;
+
+    private static final String TAG = "GameScreenActivity";
 
 
     @Override
@@ -27,6 +30,17 @@ public class GameScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
         li = (ConstraintLayout) findViewById(R.id.gamescreen_background);
+
+        Intent intent = getIntent();
+        gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+
+        Log.i(TAG, "Game_mode=" + gameMode);
+        if (gameMode == -1) {
+            Log.e(TAG, "ERROR: GAME MODE SHOULD NEVER BE -1");
+        }
+
+
+        ShapeFactory shapeBuilder = new ShapeFactory(gameMode);
 
     }
      /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");
