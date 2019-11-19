@@ -7,10 +7,12 @@ public abstract class Item {
     // private member
     private Name _name;
     private SelectedColor _color;
+    // private boolean _isMain;
 
-    public Item(Name name, SelectedColor color) {
+    public Item(Name name, SelectedColor color/*, boolean isMain*/) {
         _name = name;
         _color = color;
+        // _isMain = isMain;
     }
 
     // pure virtual function
