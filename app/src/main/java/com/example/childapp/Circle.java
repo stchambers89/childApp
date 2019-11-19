@@ -1,6 +1,7 @@
 package com.example.childapp;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import java.util.Random;
 
@@ -13,6 +14,7 @@ public class Circle extends Item implements Shape {
     public Circle(SelectedColor color) {
         super(Name.Circle, color);
 
+        Log.i("Circle","Created a Circle");
         //Need getcolor() to pick random
         //Maybe keep all colors random at create time, then when we add them to data struc
         //we change one of the colors depending on "correct shape"
