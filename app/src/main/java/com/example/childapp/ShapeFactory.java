@@ -223,6 +223,8 @@ public class ShapeFactory {
                     break;
             }
             stack.push(shapes);
+            Log.i(TAG, "STACK size" + stack.size());
+            Log.i(TAG, "STACK contents" + stack);
 
         }
         return stack;
