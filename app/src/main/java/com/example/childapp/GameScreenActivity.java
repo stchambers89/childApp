@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.List;
+import java.util.Stack;
+
 public class GameScreenActivity extends AppCompatActivity {
 
     //Game game;
@@ -41,6 +44,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
         ShapeFactory shapeBuilder = new ShapeFactory(gameMode);
+        Stack<List<Shape>> stackOfShapes = shapeBuilder.getStackofShapes();
 
     }
      /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");

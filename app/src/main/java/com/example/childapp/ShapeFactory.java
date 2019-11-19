@@ -1,5 +1,7 @@
 package com.example.childapp;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -13,10 +15,11 @@ public class ShapeFactory {
     private Stack<List<Shape>> stack = new Stack<>();
     private List<Shape> shapes = new ArrayList<Shape>();
 
+    private static final String TAG = "ShapeFactory";
+
     // NON-DEFUALT CONSTRUCTOR
     public ShapeFactory(int order) {
         this.order = order;
-        getShapes();
     }
 
     // Stack GETTER
@@ -33,6 +36,21 @@ public class ShapeFactory {
         boolean isSecond = false;
         for (int i = 0; i < 4; i++) {
             // insert algorithm
+            if (list.get(0) == null) {
+                shape = getRandomShape();
+                list.add(shape);
+                isSecond = true;
+            } else {
+                if (isSecond) {
+                    shape = list.get(0);
+                    // randomize color
+                    list.add(shape);
+                    isSecond = false;
+                } else {
+                    shape = getRandomShape();
+                    list.add(shape);
+                }
+            }
         }
         return list;
     }
@@ -46,6 +64,20 @@ public class ShapeFactory {
         boolean isSecond = false;
         for (int i = 0; i < 4; i++) {
             // insert algorithm
+            if (list.get(0) == null) {
+                shape = getRandomShape();
+                list.add(shape);
+                isSecond = true;
+            } else {
+                if (isSecond) {
+                    shape = list.get(0);
+                    list.add(shape);
+                    isSecond = false;
+                } else {
+                    shape = getRandomShape();
+                    list.add(shape);
+                }
+            }
         }
         return list;
     }
@@ -137,23 +169,28 @@ public class ShapeFactory {
     /**
      * GET SHAPES
      */
-    private void getShapes() {
+    public Stack<List<Shape>> getStackofShapes() {
+        // get 10 lists of 4 Shapes
         for (int i = 0; i < 10; i++) {
             switch (order) {
                 case 1:
                     // two shapes must be the same
                     // first one will be the one that doesn't move.
                     shapes = shapeMakerOrderOne();
+                    break;
                 case 2:
                     // colors
                     shapes = shapeMakerOrderTwo();
+                    break;
                 case 3:
                     // shapes and colors
                     shapes = shapeMakerOrderThree();
-
-                    stack.push(shapes);
+                    break;
             }
+            stack.push(shapes);
+
         }
+        return stack;
     }
 
 
