@@ -17,7 +17,7 @@ public class ShapeFactory {
 
     private static final String TAG = "ShapeFactory";
 
-    // NON-DEFUALT CONSTRUCTOR
+    // NON-DEFAULT CONSTRUCTOR
     public ShapeFactory(int order) {
         this.order = order;
     }
@@ -36,14 +36,14 @@ public class ShapeFactory {
         boolean isSecond = false;
         for (int i = 0; i < 4; i++) {
             // insert algorithm
-            if (list.get(0) == null) {
+            if (list.isEmpty()) {
                 shape = getRandomShape();
                 list.add(shape);
                 isSecond = true;
             } else {
                 if (isSecond) {
                     shape = list.get(0);
-                    // randomize color
+                    shape.changeShapeColor(getRandomColor());
                     list.add(shape);
                     isSecond = false;
                 } else {
@@ -64,13 +64,13 @@ public class ShapeFactory {
         boolean isSecond = false;
         for (int i = 0; i < 4; i++) {
             // insert algorithm
-            if (list.get(0) == null) {
+            if (list.isEmpty()) {
                 shape = getRandomShape();
                 list.add(shape);
                 isSecond = true;
             } else {
                 if (isSecond) {
-                    shape = list.get(0);
+                    shape = getRandomShape(list.get(0).getShapeColor());
                     list.add(shape);
                     isSecond = false;
                 } else {
@@ -90,7 +90,7 @@ public class ShapeFactory {
         Shape shape;
         boolean isSecond = false;
         for (int i = 0; i < 4; i++) {
-            if (list.get(0) == null) {
+            if (list.isEmpty()) {
                 shape = getRandomShape();
                 list.add(shape);
                 isSecond = true;
@@ -141,6 +141,7 @@ public class ShapeFactory {
         Shape shape;
         Random r = new Random();
         int temp = r.nextInt(6);
+
         switch (temp) {
             case 0:
                 shape = new Circle(getRandomColor());
@@ -165,6 +166,40 @@ public class ShapeFactory {
         }
         return shape;
     }
+
+    /**
+     * GET RANDOM SHAPE
+     */
+    private Shape getRandomShape(SelectedColor color) {
+        Shape shape;
+        Random r = new Random();
+        int temp = r.nextInt(6);
+
+        switch (temp) {
+            case 0:
+                shape = new Circle(color);
+                break;
+            case 1:
+                shape = new Triangle(color);
+                break;
+            case 2:
+                shape = new Square(color);
+                break;
+            case 3:
+                shape = new Star(color);
+                break;
+            case 4:
+                shape = new Diamond(color);
+                break;
+            case 5:
+                shape = new Heart(color);
+                break;
+            default:
+                shape = new Circle(color);
+        }
+        return shape;
+    }
+
 
     /**
      * GET SHAPES

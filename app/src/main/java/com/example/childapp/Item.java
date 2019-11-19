@@ -25,6 +25,7 @@ public abstract class Item {
         return _color;
     }
 
+    public void changeColor(SelectedColor color) { this._color = color; }
 
     // SETTER
 

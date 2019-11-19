@@ -14,4 +14,13 @@ public class Triangle extends Item implements Shape {
     public void draw() {
 
     }
+
+    @Override
+    public Name getShapeName() { return getShape(); }
+
+    @Override
+    public SelectedColor getShapeColor() { return getColor(); }
+
+    @Override
+    public void changeShapeColor(SelectedColor color) { changeColor(color); }
 }
