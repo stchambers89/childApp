@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        app:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/heart" />
 
     <ImageView
         android:id="@+id/shape3"
@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shape2"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        app:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/triangle" />
 
     <ImageView
         android:id="@+id/shape2"
@@ -41,7 +41,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shape1"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        app:srcCompat="@drawable/trophy" />
+        app:srcCompat="@drawable/star" />
 
     <ImageView
         android:id="@+id/mainShape"
