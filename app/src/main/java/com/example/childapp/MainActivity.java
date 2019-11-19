@@ -35,6 +35,27 @@ public class MainActivity extends AppCompatActivity {
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
 
+    public void initiateGameModeTwo(View view) {
+        // DON'T FORGET TO ADD MULTI-THREADING
+
+        Intent intent = new Intent(this, GameScreenActivity.class);
+        intent.putExtra(GAME_MODE, 2);
+        startActivity(intent);
+
+        //return game.getGameMode();   // in order for onClick to work, it cannot return anything
+    }
+
+    public void initiateGameModeThree(View view) {
+        // DON'T FORGET TO ADD MULTI-THREADING
+
+        Intent intent = new Intent(this, GameScreenActivity.class);
+        intent.putExtra(GAME_MODE, 3);
+        startActivity(intent);
+
+        //return game.getGameMode();   // in order for onClick to work, it cannot return anything
+    }
+
+
     public void runAcheivementPage(View view) {
         Intent intent = new Intent(this, AchievementPage.class);
         startActivity(intent);

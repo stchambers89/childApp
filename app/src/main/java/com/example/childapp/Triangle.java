@@ -7,7 +7,7 @@ public class Triangle extends Item implements Shape {
     public Triangle(SelectedColor color) {
 
         super(Name.Triangle, color);
-        Log.i("Triangle","Created a Triangle");
+        Log.i("Triangle","Created a " + color + " Triangle");
     }
 
     @Override

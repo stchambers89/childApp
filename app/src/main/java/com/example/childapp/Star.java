@@ -6,7 +6,7 @@ public class Star extends Item implements Shape {
 
     public Star(SelectedColor color) {
         super(Name.Star, color);
-        Log.i("Star","Created a Star");
+        Log.i("Star","Created a "  + color + " Star");
     }
 
     @Override

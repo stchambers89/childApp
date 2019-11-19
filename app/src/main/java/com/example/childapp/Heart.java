@@ -7,7 +7,7 @@ public class Heart extends Item implements Shape {
     public Heart(SelectedColor color) {
 
         super(Name.Heart, color);
-        Log.i("Heart","Created a Heart");
+        Log.i("Heart","Created a " + color + " Heart");
     }
 
     @Override

@@ -9,7 +9,7 @@ public class Square extends Item implements Shape {
     // DEFAULT CONSTRUCTOR
     public Square(SelectedColor color) {
         super(Name.Square, color);
-        Log.i("Square","Created a Square");
+        Log.i("Square","Created a "  + color + " Square");
     }
 
     @Override
