@@ -10,6 +10,7 @@ public class Star extends Shape {
     }
 
 
+    @Override
     public void draw() {
 
     }

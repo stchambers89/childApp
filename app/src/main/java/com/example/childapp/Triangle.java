@@ -2,7 +2,7 @@ package com.example.childapp;
 
 import android.util.Log;
 
-public class Triangle extends Item implements Shape {
+public class Triangle extends Shape {
 
     public Triangle(SelectedColor color) {
 
@@ -14,13 +14,4 @@ public class Triangle extends Item implements Shape {
     public void draw() {
 
     }
-
-    @Override
-    public Name getShapeName() { return getShape(); }
-
-    @Override
-    public SelectedColor getShapeColor() { return getColor(); }
-
-    @Override
-    public void changeShapeColor(SelectedColor color) { changeColor(color); }
 }

@@ -12,6 +12,7 @@ public class Square extends Shape {
         Log.i("Square","Created a "  + color + " Square");
     }
 
+    @Override
     public void draw() {
         // stub
     }

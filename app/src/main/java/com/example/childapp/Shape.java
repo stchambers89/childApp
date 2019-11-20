@@ -7,16 +7,14 @@ public abstract class Shape {
     // private member
     private Name _name;
     private SelectedColor _color;
-    // private boolean _isMain;
 
-    public Shape(Name name, SelectedColor color/*, boolean isMain*/) {
+    public Shape(Name name, SelectedColor color) {
         _name = name;
         _color = color;
-        // _isMain = isMain;
     }
 
     // pure virtual function
-    // abstract void draw();
+    abstract void draw();
 
     // GETTERS
     public Name getShape() {
@@ -27,7 +25,6 @@ public abstract class Shape {
         return _color;
     }
 
-    public void changeColor(SelectedColor color) { this._color = color; }
 
     // SETTER
 

@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Game {
     private int _gameMode;
-    private List<Item> _shapes;
+    private List<Shape> _shapes;
 
     Game(int gameMode) {
         _gameMode = gameMode;
-        _shapes = new ArrayList<Item>();
+        _shapes = new ArrayList<Shape>();
     }
 
-    Game(int gameMode, ArrayList<Item> shapes) {
+    Game(int gameMode, ArrayList<Shape> shapes) {
         _gameMode = gameMode;
         _shapes = shapes;
     }
@@ -20,7 +20,7 @@ public class Game {
     // Getter for our game mode
     public int get_gameMode() { return _gameMode; }
     // Getter for our list of shapes
-    public List<Item> getShapes() { return _shapes; }
+    public List<Shape> getShapes() { return _shapes; }
 
     // CREATE SHAPES
     private void createShapes() {

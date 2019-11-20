@@ -10,6 +10,7 @@ public class Diamond extends Shape {
         Log.i("Diamond","Created a "  + color + " Diamond");
     }
 
+    @Override
     public void draw() {
         // stub
     }
