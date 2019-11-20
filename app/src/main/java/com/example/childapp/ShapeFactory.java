@@ -70,7 +70,7 @@ public class ShapeFactory {
                 isSecond = true;
             } else {
                 if (isSecond) {
-                    shape = getRandomShape(list.get(0).getShapeColor());
+                    shape = getRandomShape(list.get(0).getColor());
                     list.add(shape);
                     isSecond = false;
                 } else {
@@ -209,27 +209,27 @@ public class ShapeFactory {
         Random r = new Random();
         int temp = r.nextInt(6);
 
-        switch (s.getShapeName()) {
+        switch (s.getShape()) {
             case Circle:
-                shape = (order == 1) ? new Circle(getRandomColor()) : new Circle(s.getShapeColor());
+                shape = (order == 1) ? new Circle(getRandomColor()) : new Circle(s.getColor());
                 break;
             case Triangle:
-                shape = (order == 1) ? new Triangle(getRandomColor()) : new Triangle(s.getShapeColor());
+                shape = (order == 1) ? new Triangle(getRandomColor()) : new Triangle(s.getColor());
                 break;
             case Square:
-                shape = (order == 1) ? new Square(getRandomColor()) : new Square(s.getShapeColor());
+                shape = (order == 1) ? new Square(getRandomColor()) : new Square(s.getColor());
                 break;
             case Star:
-                shape = (order == 1) ? new Star(getRandomColor()) : new Star(s.getShapeColor());
+                shape = (order == 1) ? new Star(getRandomColor()) : new Star(s.getColor());
                 break;
             case Diamond:
-                shape = (order == 1) ? new Diamond(getRandomColor()) : new Diamond(s.getShapeColor());
+                shape = (order == 1) ? new Diamond(getRandomColor()) : new Diamond(s.getColor());
                 break;
             case Heart:
-                shape = (order == 1) ? new Heart(getRandomColor()) : new Heart(s.getShapeColor());
+                shape = (order == 1) ? new Heart(getRandomColor()) : new Heart(s.getColor());
                 break;
             default:
-                shape = (order == 1) ? new Circle(getRandomColor()) : new Circle(s.getShapeColor());
+                shape = (order == 1) ? new Circle(getRandomColor()) : new Circle(s.getColor());
         }
         return shape;
     }

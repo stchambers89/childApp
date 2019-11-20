@@ -6,7 +6,7 @@ import android.util.Log;
 import java.util.Random;
 
 
-public class Circle extends Item implements Shape {
+public class Circle extends Shape {
 
     //private Name shape;
 
@@ -35,12 +35,4 @@ public class Circle extends Item implements Shape {
         return randomColor;
     }*/
 
-    @Override
-    public Name getShapeName() { return getShape(); }
-
-    @Override
-    public SelectedColor getShapeColor() { return getColor(); }
-
-    @Override
-    public void changeShapeColor(SelectedColor color) { changeColor(color); }
 }
