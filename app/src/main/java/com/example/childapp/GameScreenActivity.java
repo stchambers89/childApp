@@ -43,7 +43,7 @@ public class GameScreenActivity extends AppCompatActivity {
         }
 
 
-        ShapeFactory shapeBuilder = new ShapeFactory(gameMode);
+        ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
         Stack<List<Shape>> stackOfShapes = shapeBuilder.getStackofShapes();
 
     }

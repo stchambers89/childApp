@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Random;
 
-public class ShapeFactory {
+public class ShapeBuilder {
 
     // private member variables
     private int order;
@@ -18,7 +18,7 @@ public class ShapeFactory {
     private static final String TAG = "ShapeFactory";
 
     // NON-DEFAULT CONSTRUCTOR
-    public ShapeFactory(int order) {
+    public ShapeBuilder(int order) {
         this.order = order;
     }
 
