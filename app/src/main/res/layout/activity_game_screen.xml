@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shape2"
         app:layout_constraintTop_toBottomOf="@+id/mainShape"
-        app:srcCompat="@drawable/triangle" />
+        app:srcCompat="@drawable/circle" />
 
     <ImageView
         android:id="@+id/shape2"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/trophy"
+        app:srcCompat="@drawable/square"
         tools:visibility="visible" />
 
     <Button
