@@ -34,6 +34,6 @@ public class Circle extends Shape {
         int randomColor = shapeColor[new Random().nextInt(shapeColor.length)];
 
         return randomColor;
-    }*/
+    }  */
 
 }
