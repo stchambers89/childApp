@@ -7,14 +7,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Stack;
@@ -27,6 +33,15 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "GameScreenActivity";
 
+    private ImageView _shape1;
+    private ImageView _shape2;
+    private ImageView _shape3;
+
+    private ViewGroup mainLayout;
+    private int xDelta;
+    private int yDelta;
+
+    private ViewGroup _rootLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +61,56 @@ public class GameScreenActivity extends AppCompatActivity {
         ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
         Stack<List<Shape>> stackOfShapes = shapeBuilder.getStackofShapes();
 
+        // Added for touch & drop handling
+        //mainLayout = (ConstraintLayout) findViewById(R.id.gamescreen_background);
+
+        _shape1 = (ImageView) findViewById(R.id.shape1);
+        _shape2 = (ImageView) findViewById(R.id.shape2);
+        _shape3 = (ImageView) findViewById(R.id.shape3);
+
+        _shape1.setOnTouchListener(onTouchListener());
+        _shape2.setOnTouchListener(onTouchListener());
+        _shape3.setOnTouchListener(onTouchListener());
     }
+
+    private View.OnTouchListener onTouchListener() {
+        return (v, event) -> {
+            final int x = (int) event.getRawX();
+            final int y = (int) event.getRawY();
+
+            switch (event.getAction() & MotionEvent.ACTION_MASK) {
+
+                case MotionEvent.ACTION_DOWN:
+                    RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams)
+                            v.getLayoutParams();
+
+                    xDelta = x - lParams.leftMargin;
+                    yDelta = y - lParams.topMargin;
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    Toast.makeText(GameScreenActivity.this,
+                            "Click and drag worked!", Toast.LENGTH_SHORT)
+                            .show();
+                    break;
+
+                case MotionEvent.ACTION_MOVE:
+                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) v
+                            .getLayoutParams();
+                    layoutParams.leftMargin = x - xDelta;
+                    layoutParams.topMargin = y - yDelta;
+                    layoutParams.rightMargin = 0;
+                    layoutParams.bottomMargin = 0;
+                    v.setLayoutParams(layoutParams);
+                    break;
+            }
+            li.invalidate();
+            return true;
+        };
+    }
+
+
+
      /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");
         Intent intent = getIntent();
         int gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
