@@ -65,35 +65,42 @@ public class GameScreenActivity extends AppCompatActivity {
         _shape1 = (ImageView) findViewById(R.id.shape1);
         _shape2 = (ImageView) findViewById(R.id.shape2);
         _shape3 = (ImageView) findViewById(R.id.shape3);
-
         _mainShape = (ImageView) findViewById(R.id.mainShape);
 
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));
         _shape3.setOnTouchListener(onTouchListener(_shape3));
 
-        _mainShape.setOnDragListener((v, event) -> {
-            final int action = event.getAction();
-
-            switch (action) {
-                case DragEvent.ACTION_DROP:
-                    return true;
-                default:
-                    return false;
-            }
-        });
-
+        _mainShape.setOnDragListener(onDragListener());
     }
 
     private View.OnTouchListener onTouchListener(ImageView img) {
+
         return (v, event) -> {
-            ClipData data = ClipData.newPlainText("","");
-            View.DragShadowBuilder shadow = new View.DragShadowBuilder(img);
-            v.startDrag(data,shadow, null,0);
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow = new View.DragShadowBuilder(img);
+                v.startDrag(data, shadow, v, 0);
+                return true;
+            }
             return false;
         };
     }
 
+
+    private View.OnDragListener onDragListener() {
+        return new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                //final int action = event.getAction();
+                if (event.getResult()) {
+                    Log.i("DROP", "Successfully Dropped the Shape into MainShape");
+                    // Compare 
+                }
+                return true;
+            }
+        };
+    }
 
 
      /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");
@@ -134,7 +141,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void testEndingScreen(View view) {
         //li.setBackgroundColor();
 
-        // simplyt test ending screen
+        // simply test ending screen
         Intent intent = new Intent(this, EndingScreenActivity.class);
         startActivity(intent);
 
