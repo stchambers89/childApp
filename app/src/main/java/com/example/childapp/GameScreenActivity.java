@@ -78,10 +78,11 @@ public class GameScreenActivity extends AppCompatActivity {
             final int x = (int) event.getRawX();
             final int y = (int) event.getRawY();
 
+
             switch (event.getAction() & MotionEvent.ACTION_MASK) {
 
                 case MotionEvent.ACTION_DOWN:
-                    RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams)
+                    ConstraintLayout.LayoutParams lParams = (ConstraintLayout.LayoutParams)
                             v.getLayoutParams();
 
                     xDelta = x - lParams.leftMargin;
@@ -95,7 +96,7 @@ public class GameScreenActivity extends AppCompatActivity {
                     break;
 
                 case MotionEvent.ACTION_MOVE:
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) v
+                    ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) v
                             .getLayoutParams();
                     layoutParams.leftMargin = x - xDelta;
                     layoutParams.topMargin = y - yDelta;
