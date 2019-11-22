@@ -1,6 +1,5 @@
 package com.example.childapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 1);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 2);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 3);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
