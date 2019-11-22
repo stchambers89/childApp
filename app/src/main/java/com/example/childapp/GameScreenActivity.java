@@ -2,6 +2,7 @@ package com.example.childapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
@@ -11,6 +12,10 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
@@ -22,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 
 import java.util.List;
 import java.util.Stack;
@@ -62,10 +68,40 @@ public class GameScreenActivity extends AppCompatActivity {
         ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
         Stack<List<Shape>> stackOfShapes = shapeBuilder.getStackofShapes();
 
+        //gather first round and assign to activity
+        List<Shape> round = stackOfShapes.pop();
+
+        Log.i(TAG, "color: " + round.get(0).getColor().toString() + " Shape: " + round.get(0).getShape().toString() );
+        String main_shape = round.get(0).getShape().toString().toLowerCase();
+
+        String match_shape;
+        String garbage_shape1;
+        String garbage_shape2;
+
+
         _shape1 = (ImageView) findViewById(R.id.shape1);
         _shape2 = (ImageView) findViewById(R.id.shape2);
         _shape3 = (ImageView) findViewById(R.id.shape3);
         _mainShape = (ImageView) findViewById(R.id.mainShape);
+
+        _mainShape.setBackgroundResource(R.drawable.circle);
+
+        Drawable background = _mainShape.getBackground();
+        if (background instanceof ShapeDrawable) {
+            ((ShapeDrawable)background).getPaint().setColor(ContextCompat.getColor(this,R.color.blue));
+        } else if (background instanceof GradientDrawable) {
+            ((GradientDrawable)background).setColor(ContextCompat.getColor(this,R.color.blue));
+        } else if (background instanceof ColorDrawable) {
+            ((ColorDrawable)background).setColor(ContextCompat.getColor(this,R.color.blue));
+        }
+
+
+
+
+
+        //look at shape1
+        //get the "color" enum
+        //line we assign the actual color file to the shape.
 
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));

@@ -5,7 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="transparent">#00000000</color>
 
-    <item name = "blue" type="color">#0066FF</item>
+
     <item name = "purple" type="color">#b300b3</item>
     <item name = "green" type="color">#00b300</item>
     <item name = "red" type="color">#ff0000</item>
@@ -16,7 +16,7 @@
 
 
     <integer-array name="shapeColors">
-        <item>@color/blue</item>
+
         <item>@color/purple</item>
         <item>@color/green</item>
         <item>@color/red</item>
