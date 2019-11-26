@@ -2,7 +2,6 @@ package com.example.childapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
@@ -12,10 +11,6 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
@@ -27,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 
 import java.util.List;
 import java.util.Stack;
@@ -44,6 +38,8 @@ public class GameScreenActivity extends AppCompatActivity {
     private ImageView _shape2;
     private ImageView _shape3;
     private ImageView _mainShape;
+
+
 
     private ViewGroup mainLayout;
     private int xDelta;
@@ -68,44 +64,154 @@ public class GameScreenActivity extends AppCompatActivity {
         ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
         Stack<List<Shape>> stackOfShapes = shapeBuilder.getStackofShapes();
 
-        //gather first round and assign to activity
-        List<Shape> round = stackOfShapes.pop();
-
-        Log.i(TAG, "color: " + round.get(0).getColor().toString() + " Shape: " + round.get(0).getShape().toString() );
-        String main_shape = round.get(0).getShape().toString().toLowerCase();
-
-        String match_shape;
-        String garbage_shape1;
-        String garbage_shape2;
-
+        // for loop 10 times
 
         _shape1 = (ImageView) findViewById(R.id.shape1);
         _shape2 = (ImageView) findViewById(R.id.shape2);
         _shape3 = (ImageView) findViewById(R.id.shape3);
         _mainShape = (ImageView) findViewById(R.id.mainShape);
 
-        _mainShape.setBackgroundResource(R.drawable.circle);
+        int index;
+        for (int i = 0; i < 10; i++) {
 
-        Drawable background = _mainShape.getBackground();
-        if (background instanceof ShapeDrawable) {
-            ((ShapeDrawable)background).getPaint().setColor(ContextCompat.getColor(this,R.color.blue));
-        } else if (background instanceof GradientDrawable) {
-            ((GradientDrawable)background).setColor(ContextCompat.getColor(this,R.color.blue));
-        } else if (background instanceof ColorDrawable) {
-            ((ColorDrawable)background).setColor(ContextCompat.getColor(this,R.color.blue));
+
+            List<Shape> round = stackOfShapes.pop();
+            index = 0;
+
+            Log.i(TAG, "MAIN SHAPE: " + round.get(0).toString());
+            Log.i(TAG, "SHAPE 1: " + round.get(1).toString());
+            Log.i(TAG, "SHAPE 2: " + round.get(2).toString());
+            Log.i(TAG, "SHAPE 3: " + round.get(3).toString());
+
+            for (Shape shape : round) {
+
+                switch (shape.getShape().toString()) {
+                    // find shape structure
+                    case "Circle":
+                        //
+                        switch (index) {
+                            case 0:
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+                                break;
+                            case 1:
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+                                break;
+                            case 2:
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+                                break;
+                            case 3:
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+                                break;
+                        }
+
+                    case "Diamond":
+                        switch (index) {
+                            case 0:
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                            case 1:
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                            case 2:
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                            case 3:
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                        }
+                        Log.i(TAG, "DIAMOND INSTEAD OF HEART");
+                        break;
+                    case "Heart":
+                        switch (index) {
+                            case 0:
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                            case 1:
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                            case 2:
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                            case 3:
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                break;
+                        }
+                        break;
+                    case "Square":
+                        switch (index) {
+                            case 0:
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.square));
+                                break;
+                            case 1:
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.square));
+                                break;
+                            case 2:
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.square));
+                                break;
+                            case 3:
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.square));
+                                break;
+                        }
+                        break;
+                    case "Star":
+                        switch (index) {
+                            case 0:
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.star));
+                                break;
+                            case 1:
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.star));
+                                break;
+                            case 2:
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.star));
+                                break;
+                            case 3:
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.star));
+                                break;
+                        }
+                        break;
+                    case "Triangle":
+                        switch (index) {
+                            case 0:
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.triangle));
+                                break;
+                            case 1:
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.triangle));
+                                break;
+                            case 2:
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.triangle));
+                                break;
+                            case 3:
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.triangle));
+                                break;
+                        }
+                        break;
+                }
+                index += 1;
+            }
         }
 
+        // assign/change shapes to views
+
+        // change color based on color of shape
+        //switch if round.get(0).getColor() == "RED":
 
 
 
 
-        //look at shape1
-        //get the "color" enum
-        //line we assign the actual color file to the shape.
+
+
+
 
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));
         _shape3.setOnTouchListener(onTouchListener(_shape3));
+
+
+        /*_shape1.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        _shape2.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        _shape3.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.circle));*/
+
 
         _mainShape.setOnDragListener(onDragListener());
     }
