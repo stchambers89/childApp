@@ -32,8 +32,6 @@ public class GameScreenActivity extends AppCompatActivity {
     private ImageView _shape3;
     private ImageView _mainShape;
 
-
-
     private ViewGroup mainLayout;
     private int xDelta;
     private int yDelta;
@@ -239,22 +237,10 @@ public class GameScreenActivity extends AppCompatActivity {
             }
         }
 
-        // assign/change shapes to views
-
-        // change color based on color of shape
-        //switch if round.get(0).getColor() == "RED":
-
 
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));
         _shape3.setOnTouchListener(onTouchListener(_shape3));
-
-
-        /*_shape1.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        _shape2.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        _shape3.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-        _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.circle));*/
-
 
         _mainShape.setOnDragListener(onDragListener());
     }
