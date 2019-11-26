@@ -196,12 +196,6 @@ public class GameScreenActivity extends AppCompatActivity {
         //switch if round.get(0).getColor() == "RED":
 
 
-
-
-
-
-
-
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));
         _shape3.setOnTouchListener(onTouchListener(_shape3));
