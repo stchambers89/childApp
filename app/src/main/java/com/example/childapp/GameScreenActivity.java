@@ -14,6 +14,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -265,6 +267,8 @@ public class GameScreenActivity extends AppCompatActivity {
             @Override
             public boolean onDrag(View v, DragEvent event) {
                 if (event.getResult()) {
+                    int duration = Toast.LENGTH_SHORT;
+                    String txt = "";
                     ImageView dragView = (ImageView) event.getLocalState();
                     // Compare
                     switch (gameMode) {
@@ -273,7 +277,10 @@ public class GameScreenActivity extends AppCompatActivity {
                             if (_mainShape.getTag().toString().equals(dragView.getTag().toString())) {
                                 Log.i("MATCH", "You got a match!");
                                 // Go to the next round...
-
+                                txt = "Correct Match";
+                            }
+                            else {
+                                txt = "Incorrect Match";
                             }
                             break;
                         case 2:
@@ -281,7 +288,10 @@ public class GameScreenActivity extends AppCompatActivity {
                             if (_mainShape.getColorFilter().equals(dragView.getColorFilter())) {
                                 Log.i("MATCH", "You got a match!");
                                 // Go to the next round...
-
+                                txt = "Correct Match";
+                            }
+                            else {
+                                txt = "Incorrect Match";
                             }
                             break;
                         case 3:
@@ -289,9 +299,14 @@ public class GameScreenActivity extends AppCompatActivity {
                             if (_mainShape.getTag().toString().equals(dragView.getTag().toString()) && _mainShape.getColorFilter().equals(dragView.getColorFilter())) {
                                 Log.i("MATCH", "You got a match!");
                                 // Go to the next round...
-
+                                txt = "Correct Match";
+                            }
+                            else {
+                                txt = "Incorrect Match";
                             }
                     }
+                    Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
+                    toast.show();
 
                 }
                 return true;
