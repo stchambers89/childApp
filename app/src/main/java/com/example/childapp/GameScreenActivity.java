@@ -2,6 +2,7 @@ package com.example.childapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
@@ -19,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -29,7 +29,7 @@ import java.util.Stack;
 public class GameScreenActivity extends AppCompatActivity {
 
     //Game game;
-    LinearLayout li;
+    ConstraintLayout li;
     private int gameMode;
 
     private static final String TAG = "GameScreenActivity";
