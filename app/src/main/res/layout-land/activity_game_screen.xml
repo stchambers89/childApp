@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/shape2"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/heart" />
+         />
 
     <ImageView
         android:id="@+id/shape3"
@@ -24,7 +24,7 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shape2"
-        app:srcCompat="@drawable/star" />
+         />
 
     <ImageView
         android:id="@+id/shape2"
@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/triangle" />
+         />
 
     <ImageView
         android:id="@+id/mainShape"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/trophy" />
+         />
 
     <Button
         android:id="@+id/testEndingScreen"

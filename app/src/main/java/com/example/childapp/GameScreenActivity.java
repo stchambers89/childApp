@@ -107,16 +107,16 @@ public class GameScreenActivity extends AppCompatActivity {
                     case "Diamond":
                         switch (index) {
                             case 0:
-                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                _mainShape.setImageDrawable(getResources().getDrawable(R.drawable.diamond));
                                 break;
                             case 1:
-                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                _shape1.setImageDrawable(getResources().getDrawable(R.drawable.diamond));
                                 break;
                             case 2:
-                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                _shape2.setImageDrawable(getResources().getDrawable(R.drawable.diamond));
                                 break;
                             case 3:
-                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.heart));
+                                _shape3.setImageDrawable(getResources().getDrawable(R.drawable.diamond));
                                 break;
                         }
                         Log.i(TAG, "DIAMOND INSTEAD OF HEART");
