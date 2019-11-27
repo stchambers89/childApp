@@ -273,9 +273,8 @@ public class ShapeBuilder {
     /**
     * Returns a list of shapes from the saved array
     */
-    public List<Shape> getShapesFromJsonArray(JSONArray arr) throws JSONException {
-        if (!shapes.isEmpty())
-            shapes.clear();
+    public static List<Shape> getShapesFromJsonArray(JSONArray arr) throws JSONException {
+        List <Shape> shapes = new ArrayList<>();
 
         for (int i = 0; i < arr.length(); i++) {
             JSONObject shp = arr.getJSONObject(i);
