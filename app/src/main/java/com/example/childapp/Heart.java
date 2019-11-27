@@ -10,11 +10,4 @@ public class Heart extends Shape {
         Log.i("Heart","Created a " + color + " Heart");
     }
 
-
-    @Override
-    public void draw() {
-
-    }
-
-
 }

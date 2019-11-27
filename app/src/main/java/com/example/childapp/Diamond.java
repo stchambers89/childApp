@@ -9,9 +9,4 @@ public class Diamond extends Shape {
         super(Name.Diamond, color);
         Log.i("Diamond","Created a "  + color + " Diamond");
     }
-
-    @Override
-    public void draw() {
-        // stub
-    }
 }

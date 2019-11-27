@@ -3,6 +3,9 @@ package com.example.childapp;
 import android.graphics.Color;
 import android.util.Log;
 
+/**
+ * The Square class handles the creation of a Square shape
+ */
 public class Square extends Shape {
 
 
@@ -11,10 +14,4 @@ public class Square extends Shape {
         super(Name.Square, color);
         Log.i("Square","Created a "  + color + " Square");
     }
-
-    @Override
-    public void draw() {
-        // stub
-    }
-
 }
