@@ -16,7 +16,6 @@ public abstract class Shape {
         _name = name;
         _color = color;
     }
-    
 
     // GETTERS
     public Name getShape() {
@@ -26,16 +25,5 @@ public abstract class Shape {
     public SelectedColor getColor() {
         return _color;
     }
-
-
-    // SETTER
-
-    //abstract ShapeName getShape();
-
-    //abstract Color getColor();
-
-    // "Testing Adam Branch"
-
-
 
 }
