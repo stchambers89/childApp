@@ -23,7 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
-
+/**
+ * Handles the creation of a new game and handles shape/color matching.
+ */
 public class GameScreenActivity extends AppCompatActivity {
 
     //Game game;
@@ -47,18 +49,22 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private ViewGroup _rootLayout;
 
+    /**
+     * onCreate creates the game instance and sets onTouchListeners for each of the shapes.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
-
-        /*if (savedInstanceState != null) {
+        /*
+        if (savedInstanceState != null) {
             gameMode = savedInstanceState.getInt(GAME_MODE, 0);
             index = savedInstanceState.getInt("index", 0);
             for (int i = 0; i < index + 1; i++) {
                 stackOfShapes.add(savedInstanceState.getParcelableArrayList("ListInStack" + i));
             }
-        }*/
-
+        }
+        */
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
         colors.put(SelectedColor.Yellow, Color.YELLOW);
@@ -262,6 +268,12 @@ public class GameScreenActivity extends AppCompatActivity {
         _mainShape.setOnDragListener(onDragListener());
     }
 
+
+    /**
+     * This is called when any of the three shapes are dragged.
+     * @param img the imageview of the thing being dragged
+     * @return returns true if the listener has consumed the event, false if otherwise
+     */
     private View.OnTouchListener onTouchListener(ImageView img) {
 
         return (v, event) -> {
@@ -275,7 +287,10 @@ public class GameScreenActivity extends AppCompatActivity {
         };
     }
 
-
+    /**
+     * Handles the shape-matching and detects if a shape has been dropped into the main shape
+     * @return this will always return true
+     */
     private View.OnDragListener onDragListener() {
         return new View.OnDragListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -374,7 +389,12 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    /*@Override
+    /**
+     * This handles the saving of the instance state (mainly for when the screen is
+     * being changing to landscape/portrait mode).
+     * @param outState
+     */
+    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("index", index);
@@ -382,7 +402,7 @@ public class GameScreenActivity extends AppCompatActivity {
             outState.putParcelableArrayList("ListInStack" + i, (ArrayList<? extends Parcelable>) stackOfShapes.pop());
         }
         outState.putInt(GAME_MODE, gameMode);
-    }*/
+    }
 
     @Override
     public void finish() {
