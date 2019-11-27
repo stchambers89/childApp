@@ -67,7 +67,6 @@ public class GameScreenActivity extends AppCompatActivity {
             }
         }
         */
-
         prefs = getApplicationContext().getSharedPreferences("ROUND_NUM", Context.MODE_PRIVATE);
         editor = prefs.edit();
         round = prefs.getInt("ROUND_NUM",1);
