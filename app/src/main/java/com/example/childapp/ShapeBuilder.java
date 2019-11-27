@@ -7,6 +7,13 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Random;
 
+/** This class is used to populate all the shapes the game will need, and load it
+ *  into a data structure to be called later. There are 3 different logics used
+ *  based on the game type:
+ *  1- match shapes only
+ *  2- match colors only
+ *  3- match shapes and colors
+ */
 public class ShapeBuilder {
 
     // private member variables

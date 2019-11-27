@@ -5,7 +5,10 @@ import android.util.Log;
 
 import java.util.Random;
 
-
+/**
+ * CIRCLE CLASS:
+ * instructions on how to build a circle and the draw method
+ */
 public class Circle extends Shape {
 
     //private Name shape;

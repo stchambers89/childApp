@@ -51,13 +51,13 @@ public class GameScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
 
-        if (savedInstanceState != null) {
+        /*if (savedInstanceState != null) {
             gameMode = savedInstanceState.getInt(GAME_MODE, 0);
             index = savedInstanceState.getInt("index", 0);
             for (int i = 0; i < index + 1; i++) {
                 stackOfShapes.add(savedInstanceState.getParcelableArrayList("ListInStack" + i));
             }
-        }
+        }*/
 
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
@@ -374,7 +374,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    @Override
+    /*@Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("index", index);
@@ -382,7 +382,7 @@ public class GameScreenActivity extends AppCompatActivity {
             outState.putParcelableArrayList("ListInStack" + i, (ArrayList<? extends Parcelable>) stackOfShapes.pop());
         }
         outState.putInt(GAME_MODE, gameMode);
-    }
+    }*/
 
     @Override
     public void finish() {
