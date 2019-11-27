@@ -1,5 +1,6 @@
 package com.example.childapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +29,12 @@ public class GameScreenActivity extends AppCompatActivity {
     //Game game;
     ConstraintLayout li;
     private int gameMode;
+    Stack<List<Shape>> stackOfShapes;
+    private int index;
 
     private static final String TAG = "GameScreenActivity";
+    private static final String STACK = "stack";
+    private static final String GAME_MODE = "gameMode";
 
     private ImageView _shape1;
     private ImageView _shape2;
@@ -43,6 +50,15 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
+
+        if (savedInstanceState != null) {
+            gameMode = savedInstanceState.getInt(GAME_MODE, 0);
+            index = savedInstanceState.getInt("index", 0);
+            for (int i = 0; i < index + 1; i++) {
+                stackOfShapes.add(savedInstanceState.getParcelableArrayList("ListInStack" + i));
+            }
+        }
+
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
         colors.put(SelectedColor.Yellow, Color.YELLOW);
@@ -64,7 +80,7 @@ public class GameScreenActivity extends AppCompatActivity {
         }
 
         ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
-        Stack<List<Shape>> stackOfShapes = shapeBuilder.getStackofShapes();
+        stackOfShapes = shapeBuilder.getStackofShapes();
 
         // for loop 10 times
 
@@ -73,7 +89,6 @@ public class GameScreenActivity extends AppCompatActivity {
         _shape3 = (ImageView) findViewById(R.id.shape3);
         _mainShape = (ImageView) findViewById(R.id.mainShape);
 
-        int index;
         for (int i = 0; i < 10; i++) {
 
 
@@ -358,6 +373,16 @@ public class GameScreenActivity extends AppCompatActivity {
         startActivity(intent);
 
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("index", index);
+        for (int i = 0; i < index + 1; i++) {
+            outState.putParcelableArrayList("ListInStack" + i, (ArrayList<? extends Parcelable>) stackOfShapes.pop());
+        }
+        outState.putInt(GAME_MODE, gameMode);
     }
 
     @Override
