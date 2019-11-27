@@ -296,8 +296,6 @@ public class GameScreenActivity extends AppCompatActivity {
             @Override
             public boolean onDrag(View v, DragEvent event) {
                 if (event.getResult()) {
-                    int duration = Toast.LENGTH_SHORT;
-                    String txt = "";
                     ImageView dragView = (ImageView) event.getLocalState();
                     // Compare
                     switch (gameMode) {
@@ -305,40 +303,23 @@ public class GameScreenActivity extends AppCompatActivity {
                             // get shape only
                             if (_mainShape.getTag().toString().equals(dragView.getTag().toString())) {
                                 Log.i("MATCH", "You got a match!");
-                                // Go to the next round...
-                                txt = "Correct Match";
                                 next = true;
-                            }
-                            else {
-                                txt = "Incorrect Match";
                             }
                             break;
                         case 2:
                             // get color only
                             if (_mainShape.getColorFilter().equals(dragView.getColorFilter())) {
                                 Log.i("MATCH", "You got a match!");
-                                // Go to the next round...
-                                txt = "Correct Match";
                                 next = true;
-                            }
-                            else {
-                                txt = "Incorrect Match";
                             }
                             break;
                         case 3:
                             // get shape and color
                             if (_mainShape.getTag().toString().equals(dragView.getTag().toString()) && _mainShape.getColorFilter().equals(dragView.getColorFilter())) {
                                 Log.i("MATCH", "You got a match!");
-                                // Go to the next round...
-                                txt = "Correct Match";
                                 next = true;
                             }
-                            else {
-                                txt = "Incorrect Match";
-                            }
                     }
-                    Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
-                    toast.show();
 
                     if (next && round < 10) {
                         round += 1;
@@ -349,7 +330,7 @@ public class GameScreenActivity extends AppCompatActivity {
                         finish();
                         startActivity(intent);
                     }
-                    else {
+                    else if (next && round >= 10){
                         editor.putInt("ROUND_NUM", 1);
                         editor.apply();
                         testEndingScreen(v);
