@@ -2,6 +2,10 @@ package com.example.childapp;
 
 //import android.graphics.Color;
 
+/**
+ * SHAPE CLASS:
+ * Abstract class of shape. Defines getters to find the actual shape and color of a given item
+ */
 public abstract class Shape {
 
     // private member
