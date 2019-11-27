@@ -29,7 +29,6 @@ import java.util.Stack;
  * Handles the creation of a new game and handles shape/color matching.
  */
 public class GameScreenActivity extends AppCompatActivity {
-
     //Game game;
     ConstraintLayout li;
     private int gameMode;
@@ -40,7 +39,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private static final String STACK = "stack";
     private static final String GAME_MODE = "gameMode";
     private SharedPreferences prefs;
-
+    private SharedPreferences.Editor editor;
     private ImageView _shape1;
     private ImageView _shape2;
     private ImageView _shape3;
@@ -70,6 +69,7 @@ public class GameScreenActivity extends AppCompatActivity {
         */
 
         prefs = getApplicationContext().getSharedPreferences("ROUND_NUM", Context.MODE_PRIVATE);
+        editor = prefs.edit();
         round = prefs.getInt("ROUND_NUM",1);
 
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
@@ -343,15 +343,16 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     if (next && round < 10) {
                         round += 1;
-                        prefs.edit().putInt("ROUND_NUM", round);
-                        prefs.edit().apply();
-
+                        editor.putInt("ROUND_NUM", round);
+                        editor.apply();
                         Log.i("ROUND:", String.valueOf(round));
                         Intent intent = getIntent();
                         finish();
                         startActivity(intent);
                     }
                     else {
+                        editor.putInt("ROUND_NUM", 1);
+                        editor.apply();
                         testEndingScreen(v);
                     }
                 }
