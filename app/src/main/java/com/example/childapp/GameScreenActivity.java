@@ -322,7 +322,6 @@ public class GameScreenActivity extends AppCompatActivity {
                     }
                     Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
                     toast.show();
-
                 }
                 return true;
             }
