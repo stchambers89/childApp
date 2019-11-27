@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
+ * Main activity that displays the menu/selection screen.
+ *
+ * @author Ryan Arveseth, Steven Chambers, Adam Gerhartz
  *
  */
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
 
+    /**
+     * This method is run when @id "color_game"'s onClick event is triggered.
+     * This runs the second game mode.
+     * @param view
+     */
     public void initiateGameModeTwo(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
 
@@ -46,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
 
+    /**
+     * This method is run when @id "shape_and_color_game"'s onClick event is triggered.
+     * This runs the third game mode
+     * @param view
+     */
     public void initiateGameModeThree(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
 
@@ -58,27 +71,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * This method will invoke a new activity that displays achievements
+     * @param view
+     */
     public void runAcheivementPage(View view) {
         Intent intent = new Intent(this, AchievementPage.class);
         startActivity(intent);
     }
 
-
-    // STRETCH CHALLENGE --- OTHER GAME MODES
-    /*public static int initiateGameModeTwo(View view) {
-        // DON'T FORGET TO ADD MULTI-THREADING
-        Game game = new Game(2);
-        game.run();
-        return game.getGameMode();
-    }
-
-    // STRETCH CHALLENGE --- OTHER GAME MODES
-    public static int initiateGameModeThree(View view) {
-        // DON'T FORGET TO ADD MULTI-THREADING
-        Game game = new Game(3);
-        game.run();
-        return game.getGameMode();
-    }*/
 
 }
 
