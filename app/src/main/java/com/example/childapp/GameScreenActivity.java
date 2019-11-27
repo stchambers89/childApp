@@ -394,7 +394,7 @@ public class GameScreenActivity extends AppCompatActivity {
      * being changing to landscape/portrait mode).
      * @param outState
      */
-    /*@Override
+    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("index", index);
@@ -402,7 +402,7 @@ public class GameScreenActivity extends AppCompatActivity {
             outState.putParcelableArrayList("ListInStack" + i, (ArrayList<? extends Parcelable>) stackOfShapes.pop());
         }
         outState.putInt(GAME_MODE, gameMode);
-    }*/
+    }
 
     @Override
     public void finish() {
