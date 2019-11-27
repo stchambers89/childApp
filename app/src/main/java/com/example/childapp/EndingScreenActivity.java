@@ -1,13 +1,9 @@
 package com.example.childapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -15,12 +11,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.google.gson.Gson;
-
+/**
+ * Activity that shows the user's score and achievement
+ *
+ * @author Ryan Arveseth, Steven Chambers, Adam Gerhartz
+ */
 public class EndingScreenActivity extends AppCompatActivity {
 
     static int numOfTrophies;
-    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +29,31 @@ public class EndingScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ending_screen);
         numOfTrophies = 0;
 
+        // build a pop up by simply altering the window dimensions
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
+        // scale window dimensions
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.85));
 
-        //li.setBackgroundColor(Color.RED);
     }
 
+    /**
+     * Go Home navigates back to MainActivity
+     * @param view
+     */
     public void goHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Save the user's achievements to the SharedPreferences file
+     * @param view
+     */
     public void endOnStrongNote(View view) {
         // display Congratulations
         Log.i("Ending Screen", "Congratulations!");
