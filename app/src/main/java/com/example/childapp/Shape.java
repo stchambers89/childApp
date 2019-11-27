@@ -16,9 +16,7 @@ public abstract class Shape {
         _name = name;
         _color = color;
     }
-
-    // pure virtual function
-    abstract void draw();
+    
 
     // GETTERS
     public Name getShape() {
