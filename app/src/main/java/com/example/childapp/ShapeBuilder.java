@@ -19,7 +19,6 @@ public class ShapeBuilder {
     // private member variables
     private int order;
     private String color;
-    private Stack<List<Shape>> stack = new Stack<>();
     private List<Shape> shapes = new ArrayList<Shape>();
 
     private static final String TAG = "ShapeFactory";
@@ -29,9 +28,9 @@ public class ShapeBuilder {
         this.order = order;
     }
 
-    // Stack GETTER
-    public Stack<List<Shape>> getStack() {
-        return stack;
+    // List GETTER
+    public List<Shape> getList() {
+        return shapes;
     }
 
     /**
@@ -246,9 +245,7 @@ public class ShapeBuilder {
     /**
      * GET SHAPES
      */
-    public Stack<List<Shape>> getStackofShapes() {
-        // get 10 lists of 4 Shapes
-        for (int i = 0; i < 10; i++) {
+    public List<Shape> getListofShapes() {
             switch (order) {
                 case 1:
                     // two shapes must be the same
@@ -264,12 +261,9 @@ public class ShapeBuilder {
                     shapes = shapeMakerOrderThree();
                     break;
             }
-            stack.push(shapes);
-            Log.i(TAG, "STACK size" + stack.size());
-            Log.i(TAG, "STACK contents" + stack);
-
-        }
-        return stack;
+            Log.i(TAG, "LIST size" + shapes.size());
+            Log.i(TAG, "LIST contents" + shapes);
+        return shapes;
     }
 
 

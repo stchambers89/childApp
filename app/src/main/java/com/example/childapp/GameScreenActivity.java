@@ -31,7 +31,7 @@ public class GameScreenActivity extends AppCompatActivity {
     //Game game;
     ConstraintLayout li;
     private int gameMode;
-    Stack<List<Shape>> stackOfShapes;
+    List<Shape> listOfShapes;
     private int index;
 
     private static final String TAG = "GameScreenActivity";
@@ -42,7 +42,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private ImageView _shape2;
     private ImageView _shape3;
     private ImageView _mainShape;
-
+    private boolean next;
     private ViewGroup mainLayout;
     private int xDelta;
     private int yDelta;
@@ -86,27 +86,22 @@ public class GameScreenActivity extends AppCompatActivity {
         }
 
         ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
-        stackOfShapes = shapeBuilder.getStackofShapes();
-
-        // for loop 10 times
+        listOfShapes = shapeBuilder.getListofShapes();
+        next = false;
 
         _shape1 = (ImageView) findViewById(R.id.shape1);
         _shape2 = (ImageView) findViewById(R.id.shape2);
         _shape3 = (ImageView) findViewById(R.id.shape3);
         _mainShape = (ImageView) findViewById(R.id.mainShape);
 
-        for (int i = 0; i < 10; i++) {
-
-
-            List<Shape> round = stackOfShapes.pop();
             index = 0;
 
-            Log.i(TAG, "MAIN SHAPE: " + round.get(0).toString());
-            Log.i(TAG, "SHAPE 1: " + round.get(1).toString());
-            Log.i(TAG, "SHAPE 2: " + round.get(2).toString());
-            Log.i(TAG, "SHAPE 3: " + round.get(3).toString());
+            Log.i(TAG, "MAIN SHAPE: " + listOfShapes.get(0).toString());
+            Log.i(TAG, "SHAPE 1: " + listOfShapes.get(1).toString());
+            Log.i(TAG, "SHAPE 2: " + listOfShapes.get(2).toString());
+            Log.i(TAG, "SHAPE 3: " + listOfShapes.get(3).toString());
 
-            for (Shape shape : round) {
+            for (Shape shape : listOfShapes) {
                 int c = colors.get(shape.getColor());
                 switch (shape.getShape().toString()) {
                     // find shape structure
@@ -258,8 +253,6 @@ public class GameScreenActivity extends AppCompatActivity {
                 }
                 index += 1;
             }
-        }
-
 
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));
@@ -308,6 +301,7 @@ public class GameScreenActivity extends AppCompatActivity {
                                 Log.i("MATCH", "You got a match!");
                                 // Go to the next round...
                                 txt = "Correct Match";
+                                next = true;
                             }
                             else {
                                 txt = "Incorrect Match";
@@ -319,6 +313,7 @@ public class GameScreenActivity extends AppCompatActivity {
                                 Log.i("MATCH", "You got a match!");
                                 // Go to the next round...
                                 txt = "Correct Match";
+                                next = true;
                             }
                             else {
                                 txt = "Incorrect Match";
@@ -330,6 +325,7 @@ public class GameScreenActivity extends AppCompatActivity {
                                 Log.i("MATCH", "You got a match!");
                                 // Go to the next round...
                                 txt = "Correct Match";
+                                next = true;
                             }
                             else {
                                 txt = "Incorrect Match";
@@ -337,6 +333,12 @@ public class GameScreenActivity extends AppCompatActivity {
                     }
                     Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
                     toast.show();
+
+                    if (next) {
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
                 }
                 return true;
             }
@@ -388,7 +390,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
     }
-
+    /*
     /**
      * This handles the saving of the instance state (mainly for when the screen is
      * being changing to landscape/portrait mode).
