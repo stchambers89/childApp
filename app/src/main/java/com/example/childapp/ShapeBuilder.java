@@ -2,6 +2,10 @@ package com.example.childapp;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -265,6 +269,44 @@ public class ShapeBuilder {
             Log.i(TAG, "LIST contents" + shapes);
         return shapes;
     }
+
+    /**
+    * Returns a list of shapes from the saved array
+    */
+    public List<Shape> getShapesFromJsonArray(JSONArray arr) throws JSONException {
+        if (!shapes.isEmpty())
+            shapes.clear();
+
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject shp = arr.getJSONObject(i);
+            SelectedColor color = SelectedColor.valueOf(shp.getString("_color"));
+
+            switch (shp.getString("_name")) {
+                case "Circle":
+                    shapes.add(new Circle(color));
+                    break;
+                case "Triangle":
+                    shapes.add(new Triangle(color));
+                    break;
+                case "Square":
+                    shapes.add(new Square(color));
+                    break;
+                case "Star":
+                    shapes.add(new Star(color));
+                    break;
+                case "Diamond":
+                    shapes.add(new Diamond(color));
+                    break;
+                case "Heart":
+                    shapes.add(new Heart(color));
+                    break;
+                default:
+                    shapes.add(new Circle(color));
+            }
+        }
+        return shapes;
+    }
+
 
 
 }
