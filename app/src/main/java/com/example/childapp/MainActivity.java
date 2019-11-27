@@ -10,7 +10,8 @@ import android.view.View;
  * Main activity that displays the menu/selection screen.
  *
  * @author Ryan Arveseth, Steven Chambers, Adam Gerhartz
- *
+ * this is how to create javadoc, use second answer its better:
+ * https://stackoverflow.com/questions/29162820/how-to-create-javadoc-using-android-studio-without-r-and-buildconfig/31302641#31302641
  */
 public class MainActivity extends AppCompatActivity {
 
