@@ -5,7 +5,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,10 +35,11 @@ public class GameScreenActivity extends AppCompatActivity {
     private int gameMode;
     List<Shape> listOfShapes;
     private int index;
-
+    private int round;
     private static final String TAG = "GameScreenActivity";
     private static final String STACK = "stack";
     private static final String GAME_MODE = "gameMode";
+    private SharedPreferences prefs;
 
     private ImageView _shape1;
     private ImageView _shape2;
@@ -65,6 +68,10 @@ public class GameScreenActivity extends AppCompatActivity {
             }
         }
         */
+
+        prefs = getApplicationContext().getSharedPreferences("ROUND_NUM", Context.MODE_PRIVATE);
+        round = prefs.getInt("ROUND_NUM",1);
+
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
         colors.put(SelectedColor.Yellow, Color.YELLOW);
@@ -334,10 +341,18 @@ public class GameScreenActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
                     toast.show();
 
-                    if (next) {
+                    if (next && round < 10) {
+                        round += 1;
+                        prefs.edit().putInt("ROUND_NUM", round);
+                        prefs.edit().apply();
+
+                        Log.i("ROUND:", String.valueOf(round));
                         Intent intent = getIntent();
                         finish();
                         startActivity(intent);
+                    }
+                    else {
+                        testEndingScreen(v);
                     }
                 }
                 return true;
@@ -383,12 +398,9 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void testEndingScreen(View view) {
         //li.setBackgroundColor();
-
         // simply test ending screen
         Intent intent = new Intent(this, EndingScreenActivity.class);
         startActivity(intent);
-
-
     }
     /*
     /**
