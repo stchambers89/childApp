@@ -20,7 +20,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,15 +67,34 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
-        /*
+
         if (savedInstanceState != null) {
             gameMode = savedInstanceState.getInt(GAME_MODE, 0);
-            index = savedInstanceState.getInt("index", 0);
-            for (int i = 0; i < index + 1; i++) {
-                stackOfShapes.add(savedInstanceState.getParcelableArrayList("ListInStack" + i));
+            round = savedInstanceState.getInt("round", 0);
+            String tempString = (String) savedInstanceState.get("jsonObj");
+            Log.i("SAVED-TEMP STRING", tempString);
+
+
+            try {
+                JSONArray arr = new JSONArray(tempString);
+
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject s = arr.getJSONObject(i);
+                    Log.i("SAVED NAME", s.getString("_name"));
+                    Log.i("SAVED COLOR", s.getString("_color"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+
+            /*for (Shape shape : listOfShapes) {
+                Log.i("LIST OF SHAPES", shape.toString());
+            }*/
+
+            Log.i("SAVED-GAMEMODE", String.valueOf(gameMode));
+            Log.i("SAVED-ROUND", String.valueOf(round));
         }
-        */
+
         prefs = getApplicationContext().getSharedPreferences("ROUND_NUM", Context.MODE_PRIVATE);
         editor = prefs.edit();
         round = prefs.getInt("ROUND_NUM",1);
@@ -389,15 +417,22 @@ public class GameScreenActivity extends AppCompatActivity {
      * being changing to landscape/portrait mode).
      * @param outState
      */
-    /*@Override
+    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("index", index);
-        for (int i = 0; i < index + 1; i++) {
-            outState.putParcelableArrayList("ListInStack" + i, (ArrayList<? extends Parcelable>) stackOfShapes.pop());
-        }
+        outState.putInt("round", round);
+        Gson gson = new Gson();
+
+        String shapeList = gson.toJson(listOfShapes);
+        Log.i(TAG, shapeList);
+
+        outState.putString("jsonObj", shapeList);
+
         outState.putInt(GAME_MODE, gameMode);
-    }*/
+
+        Log.i("SAVING-GAMEMODE", String.valueOf(gameMode));
+        Log.i("SAVING-ROUND", String.valueOf(round));
+    }
 
     @Override
     public void finish() {
