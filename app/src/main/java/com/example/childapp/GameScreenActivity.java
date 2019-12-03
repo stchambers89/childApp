@@ -11,42 +11,42 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
+
+
 /**
  * Handles the creation of a new game and handles shape/color matching.
  */
 public class GameScreenActivity extends AppCompatActivity {
-    //Game game;
+
     ConstraintLayout li;
     private int gameMode;
     List<Shape> listOfShapes;
     private int index;
     private int round;
+    private int score;
+    private int highScore;
     private static final String TAG = "GameScreenActivity";
-    private static final String STACK = "stack";
+    private static final String ROUND = "round";
     private static final String GAME_MODE = "gameMode";
+    private static final String SCORE = "score";
+    private static final String HIGH_SCORE = "highScore";
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
     private ImageView _shape1;
@@ -67,9 +67,11 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
-        prefs = getApplicationContext().getSharedPreferences("ROUND_NUM", Context.MODE_PRIVATE);
-        editor = prefs.edit();
-        round = prefs.getInt("ROUND_NUM",1);
+        //prefs = getApplicationContext().getSharedPreferences(ROUND, Context.MODE_PRIVATE);
+        //editor = prefs.edit();
+        //round = prefs.getInt(ROUND,1);
+        //score = prefs.getInt(SCORE, 0);
+        //highScore = prefs.getInt(HIGH_SCORE, 0);
 
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
@@ -86,15 +88,12 @@ public class GameScreenActivity extends AppCompatActivity {
         Intent intent = getIntent();
         gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
 
-        Log.i(TAG, "Game_mode=" + gameMode);
-        if (gameMode == -1) {
-            Log.e(TAG, "ERROR: GAME MODE SHOULD NEVER BE -1");
-        }
-
-
+/***************************************************************************************************/
+/************** RETRIEVING FROM INSTANCE STATE *****************************************************/
         if (savedInstanceState != null) {
             gameMode = savedInstanceState.getInt(GAME_MODE, 0);
-            round = savedInstanceState.getInt("round", 0);
+            round = savedInstanceState.getInt(ROUND, 1);
+            score = savedInstanceState.getInt(SCORE, 0);
             String tempString = (String) savedInstanceState.get("jsonObj");
             Log.i("SAVED-TEMP STRING", tempString);
 
@@ -113,14 +112,13 @@ public class GameScreenActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            /*for (Shape shape : listOfShapes) {
-                Log.i("LIST OF SHAPES", shape.toString());
-            }*/
-
             Log.i("SAVED-GAMEMODE", String.valueOf(gameMode));
             Log.i("SAVED-ROUND", String.valueOf(round));
         }
         else {
+            score = 0;
+            round = 1;
+            highScore = 0;
             ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
             listOfShapes = shapeBuilder.getListofShapes();
         }
@@ -355,17 +353,31 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     if (next && round < 10) {
                         round += 1;
-                        editor.putInt("ROUND_NUM", round);
-                        editor.apply();
+                        score += 100;
+                        Log.i(SCORE, String.valueOf(score));
+                        //editor.putInt(ROUND, round);
+                        //editor.putInt(SCORE, score);
+                        //editor.putInt(HIGH_SCORE, highScore);
+                        //editor.apply();
                         Log.i("ROUND:", String.valueOf(round));
                         Intent intent = getIntent();
                         finish();
                         startActivity(intent);
                     }
-                    else if (next && round >= 10){
-                        editor.putInt("ROUND_NUM", 1);
+                    else if (next && round >= 10) {
+                        //editor.putInt(ROUND, 1);
+                        score += 100;
+                        Log.i(SCORE, String.valueOf(score));
+                        if (score > highScore) {
+                            editor.putInt(HIGH_SCORE, score);
+                        }
                         editor.apply();
                         testEndingScreen(v);
+                    }
+                    else {
+                        // We don't have a match
+                        score -= 10;
+                        Log.i(SCORE, String.valueOf(score));
                     }
                 }
                 return true;
@@ -391,22 +403,52 @@ public class GameScreenActivity extends AppCompatActivity {
         // Re-created activities receive the same CustomViewModel instance created by the first activity.
         // https://developer.android.com/topic/libraries/architecture/viewmodel.html
 
-       /* CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
-        model.getShapes().observe(this, shapes -> {
-            // Update UI
-        });
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        gameMode = savedInstanceState.getInt(GAME_MODE, 0);
+        round = savedInstanceState.getInt(ROUND, 1);
+        score = savedInstanceState.getInt(SCORE, 0);
+        String tempString = (String) savedInstanceState.get("jsonObj");
+        Log.i("SAVED-TEMP STRING", tempString);
+
+        try {
+            JSONArray arr = new JSONArray(tempString);
+
+            for (int i = 0; i < arr.length(); i++) {
+                JSONObject s = arr.getJSONObject(i);
+                Log.i("SAVED NAME", s.getString("_name"));
+                Log.i("SAVED COLOR", s.getString("_color"));
+            }
+
+            listOfShapes = ShapeBuilder.getShapesFromJsonArray(arr);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
+    /* CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
+                model.getShapes().observe(this, shapes -> {
+                    // Update UI
+                });
+            }
 
-    /**
-     * This callback should use "ViewModel" to handle configuration changes (like screen rotation) and
-     * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
-     * https://developer.android.com/topic/libraries/architecture/saving-states.html
-     */
+
+            /**
+             * This callback should use "ViewModel" to handle configuration changes (like screen rotation) and
+             * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
+             * https://developer.android.com/topic/libraries/architecture/saving-states.html
+             */
    // @Override
     //protected void onStop() {
       //  super.onStop();
 //    }
+
+
 
 
     public void testEndingScreen(View view) {
@@ -424,7 +466,9 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("round", round);
+        outState.putInt(ROUND, round);
+        outState.putInt(SCORE, score);
+        outState.putInt(HIGH_SCORE, highScore);
         Gson gson = new Gson();
 
         String shapeList = gson.toJson(listOfShapes);
