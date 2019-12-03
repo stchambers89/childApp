@@ -98,6 +98,7 @@ public class GameScreenActivity extends AppCompatActivity {
             String tempString = (String) savedInstanceState.get("jsonObj");
             Log.i("SAVED-TEMP STRING", tempString);
 
+            
             try {
                 JSONArray arr = new JSONArray(tempString);
 
