@@ -356,6 +356,8 @@ public class GameScreenActivity extends AppCompatActivity {
                     if (next && round < 10) {
                         round += 1;
                         editor.putInt("ROUND_NUM", round);
+                        // editor.putInt("SCORE", score);
+
                         editor.apply();
                         Log.i("ROUND:", String.valueOf(round));
                         Intent intent = getIntent();
@@ -364,6 +366,9 @@ public class GameScreenActivity extends AppCompatActivity {
                     }
                     else if (next && round >= 10){
                         editor.putInt("ROUND_NUM", 1);
+                        // editor.putInt("SCORE",0);
+                        // if (score > highscore)
+                            // editor.putInt("HIGHSCORE", score);
                         editor.apply();
                         testEndingScreen(v);
                     }
