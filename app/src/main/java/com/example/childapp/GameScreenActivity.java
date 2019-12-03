@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -68,11 +69,8 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
-        //prefs = getApplicationContext().getSharedPreferences(ROUND, Context.MODE_PRIVATE);
-        //editor = prefs.edit();
-        //round = prefs.getInt(ROUND,1);
-        //score = prefs.getInt(SCORE, 0);
-        //highScore = prefs.getInt(HIGH_SCORE, 0);
+        prefs = getApplicationContext().getSharedPreferences(ROUND, Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
@@ -98,7 +96,6 @@ public class GameScreenActivity extends AppCompatActivity {
             String tempString = (String) savedInstanceState.get("jsonObj");
             Log.i("SAVED-TEMP STRING", tempString);
 
-            
             try {
                 JSONArray arr = new JSONArray(tempString);
 
@@ -118,13 +115,25 @@ public class GameScreenActivity extends AppCompatActivity {
             Log.i("SAVED-ROUND", String.valueOf(round));
         }
         else {
-            score = 0;
-            round = 1;
-            highScore = 0;
+
+            round = prefs.getInt(ROUND,1);
+            score = prefs.getInt(SCORE, 0);
+            highScore = prefs.getInt(HIGH_SCORE, 0);
             ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
             listOfShapes = shapeBuilder.getListofShapes();
         }
 
+        TextView roundNum = findViewById(R.id.roundNum);
+        roundNum.setText(Integer.toString(round));
+        TextView cScore = findViewById(R.id.currentScore);
+        cScore.setText("Score: " + score);
+        TextView hScore = findViewById(R.id.highScore);
+        if (score > highScore) {
+            hScore.setText("High Score: " + score);
+        }
+        else {
+            hScore.setText("High Score: " +highScore);
+        }
         next = false;
 
         _shape1 = (ImageView) findViewById(R.id.shape1);
@@ -357,10 +366,10 @@ public class GameScreenActivity extends AppCompatActivity {
                         round += 1;
                         score += 100;
                         Log.i(SCORE, String.valueOf(score));
-                        //editor.putInt(ROUND, round);
-                        //editor.putInt(SCORE, score);
-                        //editor.putInt(HIGH_SCORE, highScore);
-                        //editor.apply();
+                        editor.putInt(ROUND, round);
+                        editor.putInt(SCORE, score);
+                        editor.putInt(HIGH_SCORE, highScore);
+                        editor.apply();
                         Log.i("ROUND:", String.valueOf(round));
                         Intent intent = getIntent();
                         finish();
@@ -373,12 +382,17 @@ public class GameScreenActivity extends AppCompatActivity {
                         if (score > highScore) {
                             editor.putInt(HIGH_SCORE, score);
                         }
+                        editor.putInt(ROUND, 1);
+                        editor.putInt(SCORE, 0);
+
                         editor.apply();
                         testEndingScreen(v);
                     }
                     else {
                         // We don't have a match
                         score -= 10;
+                        TextView cScore = findViewById(R.id.currentScore);
+                        cScore.setText("Score: " + score);
                         Log.i(SCORE, String.valueOf(score));
                     }
                 }
@@ -468,8 +482,16 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(ROUND, round);
-        outState.putInt(SCORE, score);
+        if (round < 10) {
+            outState.putInt(ROUND, round);
+            outState.putInt(SCORE, score);
+        }
+        else {
+            round = 1;
+            score = 0;
+            outState.putInt(ROUND, 1);
+            outState.putInt(SCORE, 0);
+        }
         outState.putInt(HIGH_SCORE, highScore);
         Gson gson = new Gson();
 
