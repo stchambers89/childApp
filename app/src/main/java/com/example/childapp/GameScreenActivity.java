@@ -101,8 +101,8 @@ public class GameScreenActivity extends AppCompatActivity {
         }
 
 
-/***************************************************************************************************/
-/************** RETRIEVING FROM INSTANCE STATE *****************************************************/
+/*************************************************************************************************/
+/************** RETRIEVING FROM INSTANCE STATE ***************************************************/
         if (savedInstanceState != null) {
             gameMode = savedInstanceState.getInt(GAME_MODE, 0);
             round = savedInstanceState.getInt(ROUND, 1);
