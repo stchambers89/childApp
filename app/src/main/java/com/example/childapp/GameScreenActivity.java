@@ -69,8 +69,8 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
-        prefs = getApplicationContext().getSharedPreferences(ROUND, Context.MODE_PRIVATE);
-        editor = prefs.edit();
+        //prefs = getApplicationContext().getSharedPreferences(HIGH_SCORE, Context.MODE_PRIVATE);
+        //editor = prefs.edit();
 
         Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
         colors.put(SelectedColor.Red, Color.RED);
@@ -86,6 +86,20 @@ public class GameScreenActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+        round = 1;
+
+        // BASE CASE
+        if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
+            round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
+            score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
+
+            Log.i(ROUND, "ROUND AFTER RECEIVING INTENT: " + round);
+            Log.i(SCORE, "SCORE AFTER RECEIVING INTENT: " + score);
+        } else {
+            score = 0;
+            highScore = 900;
+        }
+
 
 /***************************************************************************************************/
 /************** RETRIEVING FROM INSTANCE STATE *****************************************************/
@@ -116,9 +130,12 @@ public class GameScreenActivity extends AppCompatActivity {
         }
         else {
 
-            round = prefs.getInt(ROUND,1);
-            score = prefs.getInt(SCORE, 0);
-            highScore = prefs.getInt(HIGH_SCORE, 0);
+
+            Log.i(ROUND, "ROUND INITIALIZER: " + round);
+            Log.i(SCORE, "SCORE INITIALIZER: " + score);
+            //round = prefs.getInt(ROUND,1);
+            //score = prefs.getInt(SCORE, 0);
+            //highScore = prefs.getInt(HIGH_SCORE, 0);
             ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
             listOfShapes = shapeBuilder.getListofShapes();
         }
@@ -365,13 +382,15 @@ public class GameScreenActivity extends AppCompatActivity {
                     if (next && round < 10) {
                         round += 1;
                         score += 100;
-                        Log.i(SCORE, String.valueOf(score));
-                        editor.putInt(ROUND, round);
-                        editor.putInt(SCORE, score);
-                        editor.putInt(HIGH_SCORE, highScore);
-                        editor.apply();
-                        Log.i("ROUND:", String.valueOf(round));
+                        Log.i(SCORE, "SCORE BEFORE INTENT IS CREATED: " + String.valueOf(score));
+                        //editor.putInt(ROUND, round);
+                        //editor.putInt(SCORE, score);
+                        //editor.putInt(HIGH_SCORE, highScore);
+                        //editor.apply();
+                        Log.i("ROUND:", "ROUND BEFORE INTENT IS CREATED: " + String.valueOf(round));
                         Intent intent = getIntent();
+                        intent.putExtra(ROUND, round);
+                        intent.putExtra(SCORE, score);
                         finish();
                         startActivity(intent);
                     }
@@ -379,13 +398,13 @@ public class GameScreenActivity extends AppCompatActivity {
                         //editor.putInt(ROUND, 1);
                         score += 100;
                         Log.i(SCORE, String.valueOf(score));
-                        if (score > highScore) {
-                            editor.putInt(HIGH_SCORE, score);
-                        }
-                        editor.putInt(ROUND, 1);
-                        editor.putInt(SCORE, 0);
+                        //if (score > highScore) {
+                        //    editor.putInt(HIGH_SCORE, score);
+                        //}
+                        //editor.putInt(ROUND, 1);
+                        //editor.putInt(SCORE, 0);
 
-                        editor.apply();
+                        //editor.apply();
                         testEndingScreen(v);
                     }
                     else {

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 1);
-        resetRoundAndScores();
+        //resetRoundAndScores();
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 2);
-        resetRoundAndScores();
+        //resetRoundAndScores();
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 3);
-        resetRoundAndScores();
+        //resetRoundAndScores();
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void resetRoundAndScores() {
+    /*public void resetRoundAndScores() {
         Log.i("RESETTING","Resetting Scores and Round");
         SharedPreferences prefs;
         SharedPreferences.Editor editor;
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("round", 1);
         editor.putInt("score", 0);
         editor.apply();
-    }
+    }*/
 
 }
 
