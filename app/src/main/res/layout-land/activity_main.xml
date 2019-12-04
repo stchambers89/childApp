@@ -9,16 +9,35 @@
     tools:context=".MainActivity">
 
     <ImageButton
+        android:id="@+id/shape_and_color_game"
+        android:layout_width="280dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/transparent"
+        android:onClick="initiateGameModeThree"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/achievements_button"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/color_game"
+        app:layout_constraintVertical_bias="0.218"
+        app:srcCompat="@drawable/shape_and_color_button" />
+
+    <ImageButton
         android:id="@+id/shape_game"
         android:layout_width="280dp"
         android:layout_height="85dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:background="@color/transparent"
         android:onClick="initiateGameModeOne"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/color_game"
         app:layout_constraintEnd_toStartOf="@+id/achievements_button"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/shape_button" />
@@ -32,29 +51,12 @@
         android:background="@color/transparent"
         android:onClick="initiateGameModeTwo"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/shape_and_color_game"
         app:layout_constraintEnd_toStartOf="@+id/achievements_button"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shape_game"
         app:srcCompat="@drawable/color_button" />
-
-    <ImageButton
-        android:id="@+id/shape_and_color_game"
-        android:layout_width="280dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/transparent"
-        android:onClick="initiateGameModeThree"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/achievements_button"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color_game"
-        app:layout_constraintVertical_bias="0.218"
-        app:srcCompat="@drawable/shape_and_color_button" />
 
     <ImageButton
         android:id="@+id/achievements_button"
