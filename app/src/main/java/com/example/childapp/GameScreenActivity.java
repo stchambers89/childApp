@@ -88,13 +88,14 @@ public class GameScreenActivity extends AppCompatActivity {
         Intent intent = getIntent();
         gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
 
+        //Set background based off of gameMode
         switch(gameMode) {
             case 1:
                 setContentView(R.layout.activity_game_screen);
                 break;
 
             case 2:
-                setContentView(R.layout.activity_game_screen); // still need other background (pending)
+                setContentView(R.layout.activity_game_screen_color);
                 break;
 
             case 3:
