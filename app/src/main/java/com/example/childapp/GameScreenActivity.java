@@ -69,6 +69,7 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Red, Yellow, Blue, Green, Orange, Purple
+        //Switch
         prefs = getApplicationContext().getSharedPreferences(HIGH_SCORE, Context.MODE_PRIVATE);
         editor = prefs.edit();
 
@@ -81,11 +82,13 @@ public class GameScreenActivity extends AppCompatActivity {
         colors.put(SelectedColor.Purple, Color.rgb(255,0,255));
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_screen);
+        setContentView(R.layout.activity_game_screen_night);
         li = findViewById(R.id.gamescreen_background);
 
         Intent intent = getIntent();
         gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+
+        //switch statement to change backgrounds based on game mode 1= day, 2= bob ross, 3 night time
         round = 1;
 
         // BASE CASE
