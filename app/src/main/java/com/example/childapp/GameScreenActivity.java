@@ -82,13 +82,26 @@ public class GameScreenActivity extends AppCompatActivity {
         colors.put(SelectedColor.Purple, Color.rgb(255,0,255));
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_screen_night);
+        setContentView(R.layout.activity_game_screen);
         li = findViewById(R.id.gamescreen_background);
 
         Intent intent = getIntent();
         gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
 
-        //switch statement to change backgrounds based on game mode 1= day, 2= bob ross, 3 night time
+        switch(gameMode) {
+            case 1:
+                setContentView(R.layout.activity_game_screen);
+                break;
+
+            case 2:
+                setContentView(R.layout.activity_game_screen); // still need other background (pending)
+                break;
+
+            case 3:
+                setContentView(R.layout.activity_game_screen_night);
+                break;
+        }
+
         round = 1;
 
         // BASE CASE
