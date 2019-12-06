@@ -140,6 +140,11 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }*/
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }
 
 

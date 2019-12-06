@@ -93,14 +93,14 @@ public class EndingScreenActivity extends AppCompatActivity {
             current.setColorFilter(Color.rgb(255,215,0));
             level = 1;
         }
-        else if (score > 80) {
+        else if (score >= 80) {
             // Silver
             silverTrophies++;
             trophy.setText("Silver Star!");
             current.setColorFilter(Color.rgb(170,169,173));
             level = 2;
         }
-        else if (score > 60) {
+        else if (score >= 60) {
             // Bronze
             bronzeTrophies++;
             trophy.setText("Bronze Star!");
@@ -147,6 +147,10 @@ public class EndingScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 
 }
 
