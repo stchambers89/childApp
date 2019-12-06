@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 import java.util.Random;
@@ -265,8 +266,12 @@ public class ShapeBuilder {
                     shapes = shapeMakerOrderThree();
                     break;
             }
-            Log.i(TAG, "LIST size" + shapes.size());
-            Log.i(TAG, "LIST contents" + shapes);
+        Log.i(TAG, "LIST size" + shapes.size());
+        Log.i(TAG, "LIST contents" + shapes);
+
+        Collections.shuffle(shapes.subList(1,4));
+
+        Log.i(TAG, "LIST contents after shuffle" + shapes);
         return shapes;
     }
 
