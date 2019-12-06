@@ -97,7 +97,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/color_game"
+        android:id="@+id/shape_game"
         android:layout_width="41dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"

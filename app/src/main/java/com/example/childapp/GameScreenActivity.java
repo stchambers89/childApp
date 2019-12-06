@@ -37,6 +37,7 @@ import java.util.Map;
  */
 public class GameScreenActivity extends AppCompatActivity {
 
+    public static final String EXTRA_CONTACT = "extra_contact" ;
     ConstraintLayout li;
     private int gameMode;
     List<Shape> listOfShapes;
@@ -160,14 +161,14 @@ public class GameScreenActivity extends AppCompatActivity {
         roundNum.setText(Integer.toString(round));
         TextView cScore = findViewById(R.id.currentScore);
         cScore.setText("Score: " + score);
-        TextView hScore = findViewById(R.id.highScore);
+        //TextView hScore = findViewById(R.id.highScore);
 
-        if (score > highScore) {
-            hScore.setText("High Score: " + score);
-        }
-        else {
-            hScore.setText("High Score: " + highScore);
-        }
+        //if (score > highScore) {
+        //    hScore.setText("High Score: " + score);
+       // }
+        //else {
+         //   hScore.setText("High Score: " + highScore);
+        //}
         next = false;
 
         _shape1 = (ImageView) findViewById(R.id.shape1);

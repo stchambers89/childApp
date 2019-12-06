@@ -8,18 +8,6 @@
     android:background="@drawable/background_day_land"
     tools:context=".GameScreenActivity">
 
-    <TextView
-        android:id="@+id/highScore"
-        android:layout_width="267dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_horizontal"
-        android:text="High Score: 1000"
-        android:textColor="#444444"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/currentScore"
@@ -90,6 +78,23 @@
         android:id="@+id/group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="41dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="354dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shape_button_small"
+        android:transitionName="btn_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shape1"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

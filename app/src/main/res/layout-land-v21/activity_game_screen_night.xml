@@ -5,9 +5,10 @@
     android:id="@+id/gamescreen_background_land_night"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color_land"
+    android:background="@drawable/background_night_land"
     tools:context=".GameScreenActivity">
 
+    
 
     <TextView
         android:id="@+id/currentScore"
@@ -17,17 +18,16 @@
         android:layout_marginEnd="100dp"
         android:gravity="center_horizontal"
         android:text="Score: 1000"
-        android:textColor="#000000"
+        android:textColor="#FFEB3B"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/roundNum"
-        android:layout_width="45dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="monospace"
         android:gravity="center_horizontal"
         android:text="10"
@@ -42,8 +42,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/shape2"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/shape3"
@@ -51,8 +50,7 @@
         android:layout_height="120dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/shape2"
-        />
+        app:layout_constraintStart_toEndOf="@+id/shape2" />
 
     <ImageView
         android:id="@+id/shape2"
@@ -61,8 +59,7 @@
         android:layout_marginStart="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/mainShape"
@@ -71,8 +68,7 @@
         android:layout_marginEnd="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
@@ -87,8 +83,8 @@
         android:layout_marginTop="134dp"
         android:layout_marginEnd="354dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/color_button_small"
-        android:transitionName="btn_2"
+        android:background="@drawable/shape_and_color_button_small"
+        android:transitionName="btn_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
