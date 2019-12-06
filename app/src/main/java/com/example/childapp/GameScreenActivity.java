@@ -48,7 +48,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private static final String TAG = "GameScreenActivity";
     private static final String ROUND = "round";
     private static final String GAME_MODE = "gameMode";
-    private static final String SCORE = "score";
+    public static final String SCORE = "score";
     private static final String HIGH_SCORE = "highScore";
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -399,7 +399,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     if (next && round < 10) {
                         round += 1;
-                        score += 100;
+                        score += 10;
                         Log.i(SCORE, "SCORE BEFORE INTENT IS CREATED: " + String.valueOf(score));
 
                         Log.i("ROUND:", "ROUND BEFORE INTENT IS CREATED: " + String.valueOf(round));
@@ -411,14 +411,14 @@ public class GameScreenActivity extends AppCompatActivity {
                     }
                     else if (next && round >= 10) {
                         //editor.putInt(ROUND, 1);
-                        score += 100;
+                        score += 10;
                         Log.i(SCORE, String.valueOf(score));
                         if (score > highScore) {
                             editor.putInt(HIGH_SCORE, score);
                         }
 
                         editor.apply();
-                        testEndingScreen(v);
+                        endingScreen(v);
                     }
                     else {
                         // We don't have a match
@@ -501,10 +501,13 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
 
-    public void testEndingScreen(View view) {
+    public void endingScreen(View view) {
         //li.setBackgroundColor();
         // simply test ending screen
         Intent intent = new Intent(this, EndingScreenActivity.class);
+
+        intent.putExtra(SCORE, score);
+
         startActivity(intent);
     }
     /*

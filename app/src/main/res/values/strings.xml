@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">childApp</string>
+    <string name="app_name">Matching S.C. Game</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="Stars">Gold/Silver/Bronze Star</string>
+    <string name="Gold">Gold Star</string>
+    <string name="Silver">Silver Star</string>
+    <string name="Bronze">Bronze Star</string>
 </resources>
