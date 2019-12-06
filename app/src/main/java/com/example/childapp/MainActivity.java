@@ -1,14 +1,26 @@
 package com.example.childapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.shapes.ArcShape;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.ArcMotion;
+import android.transition.AutoTransition;
+import android.transition.ChangeBounds;
+import android.transition.ChangeImageTransform;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.TransitionSet;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 
 /**
@@ -25,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView color_game;
     private ImageView shape_and_color_game;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         shape_game = (ImageView) findViewById(R.id.shape_game);
         color_game = (ImageView) findViewById(R.id.color_game);
         shape_and_color_game = (ImageView) findViewById(R.id.shape_and_color_game);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        }
     }
 
     /**
@@ -39,14 +56,30 @@ public class MainActivity extends AppCompatActivity {
      * This runs the program.
      * @param view
      */
+
     public void initiateGameModeOne(View view) {
         // DON'T FORGET TO ADD MULTI-THREADING
 
-        Intent intent = new Intent(this, GameScreenActivity.class);
-        intent.putExtra(GAME_MODE, 1);
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(this, (ImageView)shape_game, "btn_1");
-        startActivity(intent, options.toBundle());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // Apply activity transition
+
+
+            // set an exit transition
+
+            getWindow().setExitTransition(new TransitionSet());
+            Intent intent = new Intent(this, GameScreenActivity.class);
+            intent.putExtra(GAME_MODE, 1);
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation(this, (ImageView)shape_game, "btn_1");
+
+            startActivity(intent, options.toBundle());
+        } else {
+            // Swap without transition
+        }
+        // inside your activity (if you did not enable transitions in your theme)
+
+
+
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
