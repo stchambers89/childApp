@@ -83,7 +83,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setEnterTransition(new AutoTransition());
+            getWindow().setEnterTransition(new Explode());
         }
 
         // Red, Yellow, Blue, Green, Orange, Purple
@@ -95,8 +95,8 @@ public class GameScreenActivity extends AppCompatActivity {
         colors.put(SelectedColor.Red, Color.RED);
         colors.put(SelectedColor.Yellow, Color.YELLOW);
         colors.put(SelectedColor.Blue, Color.BLUE);
-        colors.put(SelectedColor.Green, Color.GREEN);
-        colors.put(SelectedColor.Orange, Color.rgb(255,165,0));
+        colors.put(SelectedColor.Green, Color.rgb(57, 255, 20));
+        colors.put(SelectedColor.Orange, Color.rgb(255,159,0));
         colors.put(SelectedColor.Purple, Color.rgb(255,0,255));
 
         super.onCreate(savedInstanceState);

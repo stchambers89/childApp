@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             // set an exit transition
 
-            //getWindow().setExitTransition(new TransitionSet());
+            getWindow().setExitTransition(new Fade());
             Intent intent = new Intent(this, GameScreenActivity.class);
             intent.putExtra(GAME_MODE, 1);
             //ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -140,10 +140,10 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }*/
 
-    @Override
+    /*@Override
     public void onBackPressed() {
 
-    }
+    }*/
 
 }
 
