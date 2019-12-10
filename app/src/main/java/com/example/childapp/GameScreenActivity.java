@@ -516,6 +516,11 @@ public class GameScreenActivity extends AppCompatActivity {
 //    }
 
 
+    public void goToMenu(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 
 
     public void endingScreen(View view) {
