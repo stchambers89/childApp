@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
 
             // set an exit transition
 
-            getWindow().setExitTransition(new TransitionSet());
+            //getWindow().setExitTransition(new TransitionSet());
             Intent intent = new Intent(this, GameScreenActivity.class);
             intent.putExtra(GAME_MODE, 1);
-            ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(this, (ImageView)shape_game, "btn_1");
+            //ActivityOptionsCompat options = ActivityOptionsCompat.
+            //        makeSceneTransitionAnimation(this, (ImageView)shape_game, "btn_1");
 
-            startActivity(intent, options.toBundle());
+            startActivity(intent);//, options.toBundle());
         } else {
             // Swap without transition
         }
@@ -94,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 2);
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(this, (ImageView)color_game, "btn_2");
-        startActivity(intent, options.toBundle());
+        //ActivityOptionsCompat options = ActivityOptionsCompat.
+        //        makeSceneTransitionAnimation(this, (ImageView)color_game, "btn_2");
+        startActivity(intent);//, options.toBundle());
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, GameScreenActivity.class);
         intent.putExtra(GAME_MODE, 3);
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(this, (ImageView)shape_and_color_game, "btn_3");
-        startActivity(intent, options.toBundle());
+        //ActivityOptionsCompat options = ActivityOptionsCompat.
+        //        makeSceneTransitionAnimation(this, (ImageView)shape_and_color_game, "btn_3");
+        startActivity(intent);//, options.toBundle());
 
         //return game.getGameMode();   // in order for onClick to work, it cannot return anything
     }
