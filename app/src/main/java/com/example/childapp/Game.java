@@ -20,10 +20,14 @@ public class Game {
     private int round;
     private int score;
     private int getGameMode;
+    private int highScore;
 
     Game(Context context) {
         a = (GameScreenActivity) context;
-        round = 1;
+    }
+
+    public void incrementRound() {
+        round++;
     }
 
     public void setGameMode(int mode) {
@@ -38,8 +42,24 @@ public class Game {
         this.round = round;
     }
 
+    public int getRound() {
+        return round;
+    }
+
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setHighScore(int score) {
+        highScore = score;
+    }
+
+    public int getHighScore() {
+        return highScore;
     }
 
 
