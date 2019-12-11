@@ -41,7 +41,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void buttonOne_initiates_game_matching_shapes() {
 
-        //Game g = new Game(1);
+        Game g = new Game(1);
         //assertEquals(1, g.getGameMode());
 
     }

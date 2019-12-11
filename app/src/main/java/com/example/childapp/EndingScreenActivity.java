@@ -52,9 +52,6 @@ public class EndingScreenActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        // scale window dimensions
-        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.85));
-
         Intent intent = getIntent();
         score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
 
@@ -137,7 +134,8 @@ public class EndingScreenActivity extends AppCompatActivity {
         editor.apply();
 
 
-
+        // scale window dimensions
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.85));
     }
 
     /**

@@ -11,7 +11,16 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.ArcMotion;
+import android.transition.AutoTransition;
+import android.transition.ChangeBounds;
+import android.transition.ChangeImageTransform;
 import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionListenerAdapter;
+import android.transition.Visibility;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MenuItem;
@@ -40,6 +49,7 @@ import java.util.Map;
 public class GameScreenActivity extends AppCompatActivity {
 
     public static final String EXTRA_CONTACT = "extra_contact" ;
+    ConstraintLayout li;
     private int gameMode;
     List<Shape> listOfShapes;
     private int index;
@@ -50,7 +60,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private static final String ROUND = "round";
     private static final String GAME_MODE = "gameMode";
     public static final String SCORE = "score";
-    public static final String HIGH_SCORE = "highScore";
+    private static final String HIGH_SCORE = "highScore";
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
     private ImageView _shape1;
@@ -61,7 +71,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private ViewGroup mainLayout;
     private int xDelta;
     private int yDelta;
-    private Game game;
+
     private ViewGroup _rootLayout;
 
     /**
@@ -71,46 +81,67 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
 
-        //  Build game
-        Intent intent = getIntent();
-        game = new Game(this);
-        game.setGameMode(intent.getIntExtra(MainActivity.GAME_MODE, -1));
-        game.setContentView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setEnterTransition(new Explode());
+        }
 
-        // Retrieve high score
-        prefs = this.getSharedPreferences(HIGH_SCORE, Context.MODE_PRIVATE);
+        // Red, Yellow, Blue, Green, Orange, Purple
+        //Switch
+        prefs = getApplicationContext().getSharedPreferences(HIGH_SCORE, Context.MODE_PRIVATE);
         editor = prefs.edit();
 
-        // set colors
-        Map<SelectedColor, Integer> colors = game.initiateColors();
+        Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
+        colors.put(SelectedColor.Red, Color.RED);
+        colors.put(SelectedColor.Yellow, Color.YELLOW);
+        colors.put(SelectedColor.Blue, Color.BLUE);
+        colors.put(SelectedColor.Green, Color.rgb(57, 255, 20));
+        colors.put(SelectedColor.Orange, Color.rgb(255,159,0));
+        colors.put(SelectedColor.Purple, Color.rgb(255,0,255));
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game_screen);
+        li = findViewById(R.id.gamescreen_background);
+
+        Intent intent = getIntent();
+        gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+
+        //Set background based off of gameMode
+        switch(gameMode) {
+            case 1:
+                setContentView(R.layout.activity_game_screen);
+                break;
+
+            case 2:
+                setContentView(R.layout.activity_game_screen_color);
+                break;
+
+            case 3:
+                setContentView(R.layout.activity_game_screen_night);
+                break;
+        }
+
+        round = 1;
 
         // BASE CASE
-        /*if (game.getGameMode() != 1) {
-            game.setRound(intent.getIntExtra(GameScreenActivity.ROUND, 1));
-            game.setScore(intent.getIntExtra(GameScreenActivity.SCORE, 0));
-        } else {
-            game.setScore(0);
-        }*/
         if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
-            game.setRound(intent.getIntExtra(GameScreenActivity.ROUND, 1));
-            game.setScore(intent.getIntExtra(GameScreenActivity.SCORE, 0));
+            round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
+            score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
 
             Log.i(ROUND, "ROUND AFTER RECEIVING INTENT: " + round);
             Log.i(SCORE, "SCORE AFTER RECEIVING INTENT: " + score);
         } else {
-            game.setScore(0);
+            score = 0;
         }
 
 
 /*************************************************************************************************/
 /************** RETRIEVING FROM INSTANCE STATE ***************************************************/
         if (savedInstanceState != null) {
-            game.setGameMode(savedInstanceState.getInt(GAME_MODE, 0));
-            game.setRound(savedInstanceState.getInt(ROUND, 1));
-            game.setScore(savedInstanceState.getInt(SCORE, 0));
-            //highScore = savedInstanceState.getInt(HIGH_SCORE, 0);
+            gameMode = savedInstanceState.getInt(GAME_MODE, 0);
+            round = savedInstanceState.getInt(ROUND, 1);
+            score = savedInstanceState.getInt(SCORE, 0);
+            highScore = savedInstanceState.getInt(HIGH_SCORE, 0);
 
             String tempString = (String) savedInstanceState.get("jsonObj");
             Log.i("SAVED-TEMP STRING", tempString);
