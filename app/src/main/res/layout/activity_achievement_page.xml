@@ -22,24 +22,29 @@
         app:autoSizeTextType="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/silverNumber" />
 
     <ImageView
-        android:id="@+id/winning"
-        android:layout_width="325dp"
-        android:layout_height="188dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/Stars"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endTrophy"
-        tools:srcCompat="@drawable/trophy" />
+        android:id="@+id/silver"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/Silver"
+        app:layout_constraintBottom_toTopOf="@+id/silverNumber"
+        app:layout_constraintEnd_toStartOf="@+id/gold"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bronze"
+        app:layout_constraintTop_toBottomOf="@+id/winning"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/endTrophy"
         android:layout_width="351dp"
         android:layout_height="60dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center_horizontal"
         android:text="ACHIEVEMENTS"
@@ -48,24 +53,22 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/winning"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <ImageView
-        android:id="@+id/silver"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="50dp"
-        android:contentDescription="@string/Silver"
-        app:layout_constraintBottom_toTopOf="@+id/silverNumber"
-        app:layout_constraintEnd_toStartOf="@+id/gold"
+        android:id="@+id/winning"
+        android:layout_width="325dp"
+        android:layout_height="188dp"
+        android:contentDescription="@string/Stars"
+        app:layout_constraintBottom_toTopOf="@+id/silver"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bronze"
-        app:layout_constraintTop_toBottomOf="@+id/winning"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endTrophy"
+        tools:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/bronze"
@@ -76,7 +79,7 @@
         android:contentDescription="@string/Bronze"
         app:layout_constraintBottom_toBottomOf="@+id/silver"
         app:layout_constraintEnd_toStartOf="@+id/silver"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -98,45 +101,43 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="104dp"
         android:fontFamily="sans-serif-condensed-light"
         android:gravity="center_horizontal"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@id/gold"
-        app:layout_constraintRight_toRightOf="@id/gold" />
+        app:layout_constraintRight_toRightOf="@id/gold"
+        tools:layout_editor_absoluteY="492dp" />
 
     <TextView
         android:id="@+id/silverNumber"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="104dp"
         android:fontFamily="sans-serif-condensed-light"
         android:gravity="center_horizontal"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/goldNumber"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/bronzeNumber" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bronzeNumber"
+        app:layout_constraintTop_toBottomOf="@+id/silver" />
 
     <TextView
         android:id="@+id/bronzeNumber"
         android:layout_width="117dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="sans-serif-condensed-light"
         android:gravity="center_horizontal"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@id/bronze"
         app:layout_constraintRight_toRightOf="@id/bronze"
-        app:layout_constraintStart_toStartOf="@+id/bronze" />
+        app:layout_constraintStart_toStartOf="@+id/bronze"
+        tools:layout_editor_absoluteY="494dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
