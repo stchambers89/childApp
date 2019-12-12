@@ -109,7 +109,7 @@ public class EndingScreenActivity extends AppCompatActivity {
         }
         else {
             // Scary dude
-            trophy.setText("Ah! Try Again!");
+            trophy.setText("Try Again!");
             current.setImageDrawable(getResources().getDrawable(R.drawable.app_icon));
             level = 0;
         }
