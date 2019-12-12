@@ -14,4 +14,4 @@ There are 3 game modes:
 
 Each game consists of 10 rounds where the user drags the correct oject toward the top of
 the screen. After 10 rounds your final score is displayed along with a bronze, silver, 
-or gold star. 
+or gold star.  
