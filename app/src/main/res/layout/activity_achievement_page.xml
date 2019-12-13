@@ -23,8 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/silverNumber" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/silver"
@@ -64,10 +63,11 @@
         android:id="@+id/winning"
         android:layout_width="325dp"
         android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/Stars"
         app:layout_constraintBottom_toTopOf="@+id/silver"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/endTrophy"
         tools:srcCompat="@drawable/trophy" />
@@ -102,15 +102,16 @@
         android:id="@+id/goldNumber"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginRight="8dp"
         android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@+id/silverNumber"
+        app:layout_constraintEnd_toEndOf="@+id/gold"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@id/gold"
         app:layout_constraintRight_toRightOf="@id/gold"
+        app:layout_constraintStart_toStartOf="@+id/gold"
         app:layout_constraintTop_toTopOf="@+id/silverNumber" />
 
     <TextView
@@ -121,9 +122,8 @@
         android:gravity="center_horizontal"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/silver"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/silver"
         app:layout_constraintTop_toBottomOf="@+id/silver" />
 
@@ -142,6 +142,21 @@
         app:layout_constraintRight_toRightOf="@id/bronze"
         app:layout_constraintStart_toStartOf="@+id/bronze"
         app:layout_constraintTop_toTopOf="@+id/silverNumber" />
+
+    <TextView
+        android:id="@+id/matches"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#000000"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/silverNumber" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

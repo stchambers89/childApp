@@ -28,12 +28,12 @@
         android:layout_height="250dp"
         android:background="@drawable/trophy"
         android:contentDescription="@string/Stars"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/matches"
         app:layout_constraintEnd_toEndOf="@+id/endTrophy"
         app:layout_constraintEnd_toStartOf="@+id/gold"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endTrophy"
         app:layout_constraintVertical_bias="0.492" />
 
     <TextView
@@ -50,6 +50,7 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/winning"
         app:layout_constraintEnd_toEndOf="@+id/winning"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/winning"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,6 +132,21 @@
         app:layout_constraintLeft_toLeftOf="@id/bronze"
         app:layout_constraintStart_toEndOf="@+id/bronze"
         app:layout_constraintTop_toTopOf="@+id/bronze" />
+
+    <TextView
+        android:id="@+id/matches"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="center"
+        android:text="matches"
+        android:textColor="#050505"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/winning"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/winning"
+        app:layout_constraintTop_toBottomOf="@+id/winning" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

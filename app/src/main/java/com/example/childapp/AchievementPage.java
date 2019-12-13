@@ -23,13 +23,14 @@ public class AchievementPage extends AppCompatActivity {
     private int goldTrophies;
     private int silverTrophies;
     private int bronzeTrophies;
+    private int firstTryMatches;
     static int level;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     private TextView bronzeNum;
     private TextView silverNum;
     private TextView goldNum;
-
+    private TextView matches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class AchievementPage extends AppCompatActivity {
         silverTrophies = sharedPref.getInt("silverCount",0);
         goldTrophies = sharedPref.getInt("goldCount",0);
 
+        firstTryMatches = sharedPref.getInt("firstTries",0);
+
         Log.i("Gold Trophies",String.valueOf(goldTrophies));
         Log.i("Silver Trophies",String.valueOf(silverTrophies));
         Log.i("Bronze Trophies",String.valueOf(bronzeTrophies));
@@ -66,6 +69,8 @@ public class AchievementPage extends AppCompatActivity {
         bronzeNum = findViewById(R.id.bronzeNumber);
         silverNum = findViewById(R.id.silverNumber);
         goldNum = findViewById(R.id.goldNumber);
+        matches = findViewById(R.id.matches);
+
 
 
 
@@ -78,11 +83,10 @@ public class AchievementPage extends AppCompatActivity {
         silver.setColorFilter(Color.rgb(170,169,173));
         gold.setColorFilter(Color.rgb(255,215,0));
 
-
         bronzeNum.setText(String.valueOf(bronzeTrophies));
         silverNum.setText(String.valueOf(silverTrophies));
         goldNum.setText(String.valueOf(goldTrophies));
-
+        matches.setText("Matches On 1st Try: " + String.valueOf(firstTryMatches));
         editor = sharedPref.edit();
 
         switch (level) {

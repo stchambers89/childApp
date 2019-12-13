@@ -37,6 +37,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private static final String ROUND = "round";
     private static final String GAME_MODE = "gameMode";
     public static final String SCORE = "score";
+    public static final String MATCHES = "matches";
     private static final String HIGH_SCORE = "highScore";
 
     private int gameMode;
@@ -46,6 +47,8 @@ public class GameScreenActivity extends AppCompatActivity {
     private Intent intent;
     private int score;
     private int highScore;
+    private boolean firstTry;
+    private int matches;
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -96,6 +99,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_game_screen_night);
                 break;
         }
+        firstTry = true;
 
         /************ GET ROUND & SCORE ********************/
         round = 1;
@@ -104,6 +108,7 @@ public class GameScreenActivity extends AppCompatActivity {
         if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
             round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
             score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
+            matches = intent.getIntExtra(GameScreenActivity.MATCHES, 0);
 
             Log.i(ROUND, "ROUND AFTER RECEIVING INTENT: " + round);
             Log.i(SCORE, "SCORE AFTER RECEIVING INTENT: " + score);
@@ -370,6 +375,9 @@ public class GameScreenActivity extends AppCompatActivity {
                         Intent intent = getIntent();
                         intent.putExtra(ROUND, round);
                         intent.putExtra(SCORE, score);
+
+                        intent.putExtra(MATCHES, (firstTry) ? ++matches : matches);
+
                         finish();
                         startActivity(intent);
                     }
@@ -381,12 +389,17 @@ public class GameScreenActivity extends AppCompatActivity {
                             editor.putInt(HIGH_SCORE, score);
                         }
 
+                        if (firstTry) {
+                            matches++;
+                        }
+
                         editor.apply();
                         endingScreen(v);
                     }
                     else {
                         // We don't have a match
                         score -= 10;
+                        firstTry = false;
                         TextView cScore = findViewById(R.id.currentScore);
                         cScore.setText("Score: " + score);
                         Log.i(SCORE, String.valueOf(score));
@@ -479,6 +492,7 @@ public class GameScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EndingScreenActivity.class);
 
         intent.putExtra(SCORE, score);
+        intent.putExtra(MATCHES, matches);
 
         startActivity(intent);
     }
