@@ -2,7 +2,9 @@ package com.example.childapp;
 
 import android.util.Log;
 
-public class Heart extends Shape {
+import java.io.Serializable;
+
+public class Heart extends Shape implements Serializable {
 
     public Heart(SelectedColor color) {
 

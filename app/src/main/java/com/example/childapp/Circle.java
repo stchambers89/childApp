@@ -3,13 +3,14 @@ package com.example.childapp;
 import android.graphics.Color;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * CIRCLE CLASS:
  * instructions on how to build a circle and the draw method
  */
-public class Circle extends Shape {
+public class Circle extends Shape implements Serializable {
 
     //private Name shape;
 

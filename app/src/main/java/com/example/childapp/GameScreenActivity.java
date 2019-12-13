@@ -47,6 +47,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private Intent intent;
     private int score;
     private int highScore;
+    private Game game;
     private boolean firstTry;
     private int matches;
 
@@ -60,7 +61,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private boolean next;
     private Map<SelectedColor, Integer> colors;
-    
+
 
     /**
      * onCreate creates the game instance and sets onTouchListeners for each of the shapes.
@@ -74,19 +75,30 @@ public class GameScreenActivity extends AppCompatActivity {
         //    getWindow().setEnterTransition(new Explode());
         //}
 
+        /*if (game != null) {
+
+        } else {*/
+        super.onCreate(savedInstanceState);
+        getGameMode();
+        game = new Game(gameMode);
+        Log.i(TAG, "game instantiated");
+
+
         /*********** SHARED PREFERENCES ********************/
         prefs = getApplicationContext().getSharedPreferences(HIGH_SCORE, Context.MODE_PRIVATE);
         editor = prefs.edit();
+        Log.i(TAG, "sPref");
 
         /*********** SET COLORS ********************/
         setRgbColors();
+        Log.i(TAG, "colors set");
 
-        super.onCreate(savedInstanceState);
-        getGameMode();
+        //super.onCreate(savedInstanceState);
+        //getGameMode();
 
         /************ SET CONTENT VIEW ****************/
         //Set background based off of gameMode
-        switch(gameMode) {
+        switch(game.get_gameMode()) {
             case 1:
                 setContentView(R.layout.activity_game_screen);
                 break;
@@ -100,43 +112,57 @@ public class GameScreenActivity extends AppCompatActivity {
                 break;
         }
         firstTry = true;
+        Log.i(TAG, "content view created");
+
 
         /************ GET ROUND & SCORE ********************/
-        round = 1;
+        game.set_round(1);
 
         // BASE CASE
         if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
             round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
             score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
             matches = intent.getIntExtra(GameScreenActivity.MATCHES, 0);
+            //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
+            //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
+            game = (Game) intent.getParcelableExtra("name_of_extra");
 
-            Log.i(ROUND, "ROUND AFTER RECEIVING INTENT: " + round);
-            Log.i(SCORE, "SCORE AFTER RECEIVING INTENT: " + score);
+            Log.i(TAG, "game created via parcelable");
+
         } else {
-            score = 0;
+            game.set_score(0);
+            Log.i(TAG, "score set");
         }
 
         /************* CHECK FOR DATA FROM INSTANCE STATE *****************/
         if (savedInstanceState != null) {
-            gameMode     = savedInstanceState.getInt(GAME_MODE, 0);
-            round        = savedInstanceState.getInt(ROUND, 1);
-            score        = savedInstanceState.getInt(SCORE, 0);
-            highScore    = savedInstanceState.getInt(HIGH_SCORE, 0);
-            listOfShapes = getShapes(savedInstanceState);
+            assert game != null;
+            game.set_gameMode(savedInstanceState.getInt(GAME_MODE, 0));
+            game.set_round(savedInstanceState.getInt(ROUND, 1));
+            game.set_score(savedInstanceState.getInt(SCORE, 0));
+            game.set_shapes(getShapes(savedInstanceState));
+
+            Log.i(TAG, "got instance state");
         }
         else {
             highScore = prefs.getInt(HIGH_SCORE, 0);
 
             // build new shapes each round
             ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
-            listOfShapes = shapeBuilder.getListofShapes();
+            game.set_shapes(shapeBuilder.getListofShapes());
+
+            Log.i(TAG, "shapes set correctly in game.set_shape(List<Shape>)");
         }
 
         // more drawing
         TextView roundNum = findViewById(R.id.roundNum);
-        roundNum.setText(Integer.toString(round));
+        Log.i(TAG, "roundNum initialized");
+        roundNum.setText(Integer.toString(game.get_round()));
+        Log.i(TAG, "text set");
         TextView cScore = findViewById(R.id.currentScore);
-        cScore.setText("Score: " + score);
+        cScore.setText("Score: " + game.get_score());
+
+        Log.i(TAG, "text and score drawn correctly");
 
         next = false;
 
@@ -145,14 +171,16 @@ public class GameScreenActivity extends AppCompatActivity {
         _shape3 = (ImageView) findViewById(R.id.shape3);
         _mainShape = (ImageView) findViewById(R.id.mainShape);
 
+        Log.i(TAG, "shapes drawn correctly");
+
         index = 0;
 
-        Log.i(TAG, "MAIN SHAPE: " + listOfShapes.get(0).toString());
-        Log.i(TAG, "SHAPE 1: " + listOfShapes.get(1).toString());
-        Log.i(TAG, "SHAPE 2: " + listOfShapes.get(2).toString());
-        Log.i(TAG, "SHAPE 3: " + listOfShapes.get(3).toString());
+        //Log.i(TAG, "MAIN SHAPE: " + listOfShapes.get(0).toString());
+        //Log.i(TAG, "SHAPE 1: " + listOfShapes.get(1).toString());
+        //Log.i(TAG, "SHAPE 2: " + listOfShapes.get(2).toString());
+        //Log.i(TAG, "SHAPE 3: " + listOfShapes.get(3).toString());
 
-            for (Shape shape : listOfShapes) {
+            for (Shape shape : game.get_shapes()) {
                 int c = colors.get(shape.getColor());
                 switch (shape.getShape().toString()) {
                     // find shape structure
@@ -305,11 +333,17 @@ public class GameScreenActivity extends AppCompatActivity {
                 index += 1;
             }
 
+        Log.i(TAG, "shapes drawn correctly # 2");
+
         _shape1.setOnTouchListener(onTouchListener(_shape1));
         _shape2.setOnTouchListener(onTouchListener(_shape2));
         _shape3.setOnTouchListener(onTouchListener(_shape3));
 
+        Log.i(TAG, "shapes correctly dragable");
+
         _mainShape.setOnDragListener(onDragListener());
+
+        Log.i(TAG, "shapes dragable 2");
     }
 
 
@@ -343,7 +377,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 if (event.getResult()) {
                     ImageView dragView = (ImageView) event.getLocalState();
                     // Compare
-                    switch (gameMode) {
+                    switch (game.get_gameMode()) {
                         case 1:
                             // get shape only
                             if (_mainShape.getTag().toString().equals(dragView.getTag().toString())) {
@@ -366,27 +400,31 @@ public class GameScreenActivity extends AppCompatActivity {
                             }
                     }
 
-                    if (next && round < 10) {
-                        round += 1;
-                        score += 10;
-                        Log.i(SCORE, "SCORE BEFORE INTENT IS CREATED: " + String.valueOf(score));
+                    if (next && game.get_round() < 10) {
+                        game.set_round(game.get_round() + 1);
+                        game.set_score(game.get_score() + 10);
+                        Log.i(SCORE, "SCORE BEFORE INTENT IS CREATED: " + String.valueOf(game.get_score()));
 
-                        Log.i("ROUND:", "ROUND BEFORE INTENT IS CREATED: " + String.valueOf(round));
+                        Log.i("ROUND:", "ROUND BEFORE INTENT IS CREATED: " + String.valueOf(game.get_round()));
                         Intent intent = getIntent();
                         intent.putExtra(ROUND, round);
                         intent.putExtra(SCORE, score);
 
                         intent.putExtra(MATCHES, (firstTry) ? ++matches : matches);
 
+                        intent.putExtra(ROUND, game.get_round());
+                        //intent.putExtra(SCORE, score);
+                        intent.putExtra("name_of_extra", game);
                         finish();
                         startActivity(intent);
                     }
-                    else if (next && round >= 10) {
+                    else if (next && game.get_round() >= 10) {
+                        Log.i(TAG, "ROUND OVER 10");
                         //editor.putInt(ROUND, 1);
-                        score += 10;
-                        Log.i(SCORE, String.valueOf(score));
-                        if (score > highScore) {
-                            editor.putInt(HIGH_SCORE, score);
+                        game.set_score(game.get_score() + 10);
+                        Log.i(SCORE, String.valueOf(game.get_score()));
+                        if (game.get_score() > highScore) {
+                            editor.putInt(HIGH_SCORE, game.get_score());
                         }
 
                         if (firstTry) {
@@ -400,9 +438,10 @@ public class GameScreenActivity extends AppCompatActivity {
                         // We don't have a match
                         score -= 10;
                         firstTry = false;
+                        game.set_score(game.get_score() - 10);
                         TextView cScore = findViewById(R.id.currentScore);
-                        cScore.setText("Score: " + score);
-                        Log.i(SCORE, String.valueOf(score));
+                        cScore.setText("Score: " + game.get_score());
+                        Log.i(SCORE, String.valueOf(game.get_score()));
                     }
                 }
                 return true;
@@ -436,10 +475,10 @@ public class GameScreenActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        gameMode = savedInstanceState.getInt(GAME_MODE, 0);
-        round = savedInstanceState.getInt(ROUND, 1);
-        score = savedInstanceState.getInt(SCORE, 0);
-        highScore = savedInstanceState.getInt(HIGH_SCORE, 0);
+        game.set_gameMode(savedInstanceState.getInt(GAME_MODE, 0));
+        game.set_round(savedInstanceState.getInt(ROUND, 1));
+        game.set_score(savedInstanceState.getInt(SCORE, 0));
+        //highScore = savedInstanceState.getInt(HIGH_SCORE, 0);
 
         String tempString = (String) savedInstanceState.get("jsonObj");
         Log.i("SAVED-TEMP STRING", tempString);
@@ -453,31 +492,13 @@ public class GameScreenActivity extends AppCompatActivity {
                 Log.i("SAVED COLOR", s.getString("_color"));
             }
 
-            listOfShapes = ShapeBuilder.getShapesFromJsonArray(arr);
+            game.set_shapes(ShapeBuilder.getShapesFromJsonArray(arr));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
-
-    /* CustomViewModel model = ViewModelProviders.of(this).get(CustomViewModel.class);
-                model.getShapes().observe(this, shapes -> {
-                    // Update UI
-                });
-            }
-
-
-            /**
-             * This callback should use "ViewModel" to handle configuration changes (like screen rotation) and
-             * "onSaveInstanceState()" as a back-up to handle system-initiated process death.
-             * https://developer.android.com/topic/libraries/architecture/saving-states.html
-             */
-   // @Override
-    //protected void onStop() {
-      //  super.onStop();
-//    }
-
 
     public void goToMenu(View v) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -491,6 +512,7 @@ public class GameScreenActivity extends AppCompatActivity {
         // simply test ending screen
         Intent intent = new Intent(this, EndingScreenActivity.class);
 
+        intent.putExtra(SCORE, game.get_score());
         intent.putExtra(SCORE, score);
         intent.putExtra(MATCHES, matches);
 
@@ -506,27 +528,27 @@ public class GameScreenActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         if (round < 10) {
-            outState.putInt(ROUND, round);
-            outState.putInt(SCORE, score);
+            outState.putInt(ROUND, game.get_round());
+            outState.putInt(SCORE, game.get_score());
         }
         else {
-            round = 1;
-            score = 0;
+            game.set_round(1);
+            game.set_score(0);
             outState.putInt(ROUND, 1);
             outState.putInt(SCORE, 0);
         }
         outState.putInt(HIGH_SCORE, highScore);
         Gson gson = new Gson();
 
-        String shapeList = gson.toJson(listOfShapes);
+        String shapeList = gson.toJson(game.get_shapes());
         Log.i(TAG, shapeList);
 
         outState.putString("jsonObj", shapeList);
 
-        outState.putInt(GAME_MODE, gameMode);
+        outState.putInt(GAME_MODE, game.get_gameMode());
 
-        Log.i("SAVING-GAMEMODE", String.valueOf(gameMode));
-        Log.i("SAVING-ROUND", String.valueOf(round));
+        Log.i("SAVING-GAMEMODE", String.valueOf(game.get_gameMode()));
+        Log.i("SAVING-ROUND", String.valueOf(game.get_round()));
     }
 
     @Override
@@ -574,7 +596,7 @@ public class GameScreenActivity extends AppCompatActivity {
      */
     private void getGameMode() {
         intent = getIntent();
-        gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+        gameMode = (intent.getIntExtra(MainActivity.GAME_MODE, -1));
     }
 
     /**
@@ -597,12 +619,12 @@ public class GameScreenActivity extends AppCompatActivity {
                 Log.i("SAVED COLOR", s.getString("_color"));
             }
 
-            listOfShapes = ShapeBuilder.getShapesFromJsonArray(arr);
+            game.set_shapes(ShapeBuilder.getShapesFromJsonArray(arr));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return listOfShapes;
+        return game.get_shapes();
     }
 }
