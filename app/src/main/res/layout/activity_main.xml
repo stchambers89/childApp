@@ -14,16 +14,16 @@
         android:layout_width="364dp"
         android:layout_height="104dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
         android:background="@color/transparent"
         android:onClick="initiateGameModeOne"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/color_game"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:srcCompat="@drawable/shape_button" />
 
     <ImageButton
@@ -75,4 +75,57 @@
         app:layout_constraintTop_toBottomOf="@id/shape_and_color_game"
         app:layout_constraintVertical_bias="0.897"
         app:srcCompat="@drawable/trophy" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="bottom"
+        android:text="Shapes"
+        android:textColor="#444343"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/shape_game"
+        app:layout_constraintStart_toStartOf="@+id/shape_game" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="bottom"
+        android:text="Colors"
+        android:textColor="#444343"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/color_game"
+        app:layout_constraintStart_toStartOf="@+id/color_game" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="bottom"
+        android:text="Shapes and Colors"
+        android:textColor="#444343"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/shape_and_color_game"
+        app:layout_constraintStart_toStartOf="@+id/shape_and_color_game" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="266dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:text="Shape Scapes"
+        android:textColor="#050505"
+        app:autoSizeMaxTextSize="60dp"
+        app:autoSizeMinTextSize="30dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="@+id/shape_game"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

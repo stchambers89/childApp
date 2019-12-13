@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_day_land"
     tools:context=".GameScreenActivity">
-    
+
 
     <TextView
         android:id="@+id/currentScore"
@@ -15,6 +15,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="100dp"
+        android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
         android:text="Score: 1000"
         android:textColor="#000000"
@@ -24,11 +25,10 @@
 
     <TextView
         android:id="@+id/roundNum"
-        android:layout_width="45dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="10dp"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="monospace"
+        android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
         android:text="10"
         android:textColor="#000000"

@@ -8,6 +8,58 @@
     android:background="@drawable/background_day_land"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="266dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:text="Shape Scapes"
+        android:textColor="#050505"
+        app:autoSizeMaxTextSize="60dp"
+        app:autoSizeMinTextSize="30dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/achievements_button"
+        app:layout_constraintEnd_toEndOf="@+id/achievements_button"
+        app:layout_constraintStart_toStartOf="@+id/achievements_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="bottom|right"
+        android:text="Shapes"
+        android:textColor="#444343"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/shape_game"
+        app:layout_constraintEnd_toEndOf="@+id/shape_game" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="bottom|right"
+        android:text="Colors"
+        android:textColor="#444343"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/color_game"
+        app:layout_constraintEnd_toEndOf="@+id/color_game" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="bottom|right"
+        android:text="Shapes and Colors"
+        android:textColor="#444343"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/shape_and_color_game"
+        app:layout_constraintEnd_toEndOf="@+id/shape_and_color_game" />
+
     <ImageButton
         android:id="@+id/shape_and_color_game"
         android:layout_width="280dp"
