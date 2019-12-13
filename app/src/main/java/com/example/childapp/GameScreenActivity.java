@@ -11,16 +11,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.ArcMotion;
-import android.transition.AutoTransition;
-import android.transition.ChangeBounds;
-import android.transition.ChangeImageTransform;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.transition.TransitionListenerAdapter;
-import android.transition.Visibility;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MenuItem;
@@ -29,15 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,31 +33,31 @@ import java.util.Map;
  */
 public class GameScreenActivity extends AppCompatActivity {
 
-    public static final String EXTRA_CONTACT = "extra_contact" ;
-    ConstraintLayout li;
-    private int gameMode;
-    List<Shape> listOfShapes;
-    private int index;
-    private int round;
-    private int score;
-    private int highScore;
     private static final String TAG = "GameScreenActivity";
     private static final String ROUND = "round";
     private static final String GAME_MODE = "gameMode";
     public static final String SCORE = "score";
     private static final String HIGH_SCORE = "highScore";
+
+    private int gameMode;
+    List<Shape> listOfShapes;
+    private int index;
+    private int round;
+    private Intent intent;
+    private int score;
+    private int highScore;
+
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
+
     private ImageView _shape1;
     private ImageView _shape2;
     private ImageView _shape3;
     private ImageView _mainShape;
-    private boolean next;
-    private ViewGroup mainLayout;
-    private int xDelta;
-    private int yDelta;
 
-    private ViewGroup _rootLayout;
+    private boolean next;
+    private Map<SelectedColor, Integer> colors;
+    
 
     /**
      * onCreate creates the game instance and sets onTouchListeners for each of the shapes.
@@ -82,30 +67,21 @@ public class GameScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setEnterTransition(new Explode());
-        }
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        //    getWindow().setEnterTransition(new Explode());
+        //}
 
-        // Red, Yellow, Blue, Green, Orange, Purple
-        //Switch
+        /*********** SHARED PREFERENCES ********************/
         prefs = getApplicationContext().getSharedPreferences(HIGH_SCORE, Context.MODE_PRIVATE);
         editor = prefs.edit();
 
-        Map<SelectedColor, Integer> colors = new HashMap<SelectedColor, Integer>();
-        colors.put(SelectedColor.Red, Color.RED);
-        colors.put(SelectedColor.Yellow, Color.YELLOW);
-        colors.put(SelectedColor.Blue, Color.BLUE);
-        colors.put(SelectedColor.Green, Color.rgb(57, 255, 20));
-        colors.put(SelectedColor.Orange, Color.rgb(255,159,0));
-        colors.put(SelectedColor.Purple, Color.rgb(255,0,255));
+        /*********** SET COLORS ********************/
+        setRgbColors();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_screen);
-        li = findViewById(R.id.gamescreen_background);
+        getGameMode();
 
-        Intent intent = getIntent();
-        gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
-
+        /************ SET CONTENT VIEW ****************/
         //Set background based off of gameMode
         switch(gameMode) {
             case 1:
@@ -121,6 +97,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 break;
         }
 
+        /************ GET ROUND & SCORE ********************/
         round = 1;
 
         // BASE CASE
@@ -134,58 +111,28 @@ public class GameScreenActivity extends AppCompatActivity {
             score = 0;
         }
 
-
-/*************************************************************************************************/
-/************** RETRIEVING FROM INSTANCE STATE ***************************************************/
+        /************* CHECK FOR DATA FROM INSTANCE STATE *****************/
         if (savedInstanceState != null) {
-            gameMode = savedInstanceState.getInt(GAME_MODE, 0);
-            round = savedInstanceState.getInt(ROUND, 1);
-            score = savedInstanceState.getInt(SCORE, 0);
-            highScore = savedInstanceState.getInt(HIGH_SCORE, 0);
-
-            String tempString = (String) savedInstanceState.get("jsonObj");
-            Log.i("SAVED-TEMP STRING", tempString);
-
-            try {
-                JSONArray arr = new JSONArray(tempString);
-
-                for (int i = 0; i < arr.length(); i++) {
-                    JSONObject s = arr.getJSONObject(i);
-                    Log.i("SAVED NAME", s.getString("_name"));
-                    Log.i("SAVED COLOR", s.getString("_color"));
-                }
-
-                listOfShapes = ShapeBuilder.getShapesFromJsonArray(arr);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            Log.i("SAVED-GAMEMODE", String.valueOf(gameMode));
-            Log.i("SAVED-ROUND", String.valueOf(round));
+            gameMode     = savedInstanceState.getInt(GAME_MODE, 0);
+            round        = savedInstanceState.getInt(ROUND, 1);
+            score        = savedInstanceState.getInt(SCORE, 0);
+            highScore    = savedInstanceState.getInt(HIGH_SCORE, 0);
+            listOfShapes = getShapes(savedInstanceState);
         }
         else {
-            Log.i(ROUND, "ROUND INITIALIZER: " + round);
-            Log.i(SCORE, "SCORE INITIALIZER: " + score);
-
             highScore = prefs.getInt(HIGH_SCORE, 0);
 
+            // build new shapes each round
             ShapeBuilder shapeBuilder = new ShapeBuilder(gameMode);
             listOfShapes = shapeBuilder.getListofShapes();
         }
 
+        // more drawing
         TextView roundNum = findViewById(R.id.roundNum);
         roundNum.setText(Integer.toString(round));
         TextView cScore = findViewById(R.id.currentScore);
         cScore.setText("Score: " + score);
-        //TextView hScore = findViewById(R.id.highScore);
 
-        //if (score > highScore) {
-        //    hScore.setText("High Score: " + score);
-       // }
-        //else {
-         //   hScore.setText("High Score: " + highScore);
-        //}
         next = false;
 
         _shape1 = (ImageView) findViewById(R.id.shape1);
@@ -193,12 +140,12 @@ public class GameScreenActivity extends AppCompatActivity {
         _shape3 = (ImageView) findViewById(R.id.shape3);
         _mainShape = (ImageView) findViewById(R.id.mainShape);
 
-            index = 0;
+        index = 0;
 
-            Log.i(TAG, "MAIN SHAPE: " + listOfShapes.get(0).toString());
-            Log.i(TAG, "SHAPE 1: " + listOfShapes.get(1).toString());
-            Log.i(TAG, "SHAPE 2: " + listOfShapes.get(2).toString());
-            Log.i(TAG, "SHAPE 3: " + listOfShapes.get(3).toString());
+        Log.i(TAG, "MAIN SHAPE: " + listOfShapes.get(0).toString());
+        Log.i(TAG, "SHAPE 1: " + listOfShapes.get(1).toString());
+        Log.i(TAG, "SHAPE 2: " + listOfShapes.get(2).toString());
+        Log.i(TAG, "SHAPE 3: " + listOfShapes.get(3).toString());
 
             for (Shape shape : listOfShapes) {
                 int c = colors.get(shape.getColor());
@@ -451,6 +398,9 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
 
+
+
+
      /*   Log.v ("Launching issues", "This is launching from oncreate in game screen");
         Intent intent = getIntent();
         int gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
@@ -588,4 +538,57 @@ public class GameScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Set RGB Colors maps the Enum class (SelectedColor) with a rgb value.
+     */
+    private void setRgbColors() {
+        colors = new HashMap<SelectedColor, Integer>();
+
+        // primary colors
+        colors.put(SelectedColor.Red, Color.RED);
+        colors.put(SelectedColor.Yellow, Color.YELLOW);
+        colors.put(SelectedColor.Blue, Color.BLUE);
+
+        // secondary colors
+        colors.put(SelectedColor.Green, Color.rgb(57, 255, 20));
+        colors.put(SelectedColor.Orange, Color.rgb(255,159,0));
+        colors.put(SelectedColor.Purple, Color.rgb(255,0,255));
+    }
+
+    /**
+     * Get Game Mode gets the Integer
+     */
+    private void getGameMode() {
+        intent = getIntent();
+        gameMode = intent.getIntExtra(MainActivity.GAME_MODE, -1);
+    }
+
+    /**
+     * This function gets a list of shapes from the saved instance state.
+     *
+     * @param savedInstanceState is used to get the String to be serialized
+     * @return list of shapes
+     */
+    private List<Shape> getShapes(Bundle savedInstanceState) {
+        String tempString = (String) savedInstanceState.get("jsonObj");
+        Log.i("SAVED-TEMP STRING", tempString);
+
+        try {
+
+            JSONArray arr = new JSONArray(tempString);
+
+            for (int i = 0; i < arr.length(); i++) {
+                JSONObject s = arr.getJSONObject(i);
+                Log.i("SAVED NAME", s.getString("_name"));
+                Log.i("SAVED COLOR", s.getString("_color"));
+            }
+
+            listOfShapes = ShapeBuilder.getShapesFromJsonArray(arr);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return listOfShapes;
+    }
 }

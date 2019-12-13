@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             // set an exit transition
 
-            getWindow().setExitTransition(new Fade());
+            getWindow().setExitTransition(new Explode());
             Intent intent = new Intent(this, GameScreenActivity.class);
             intent.putExtra(GAME_MODE, 1);
             //ActivityOptionsCompat options = ActivityOptionsCompat.
