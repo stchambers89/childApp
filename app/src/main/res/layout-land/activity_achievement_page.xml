@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/endingscreen_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup"
+    tools:context=".EndingScreenActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="257dp"
+        android:layout_height="76dp"
+        android:fontFamily="sans-serif-light"
+        android:onClick="goHome"
+        android:text="@string/main_menu"
+        android:textSize="30sp"
+        app:autoSizeTextType="none"
+        app:layout_constraintBottom_toTopOf="@+id/gold"
+        app:layout_constraintEnd_toEndOf="@+id/goldNumber"
+        app:layout_constraintStart_toStartOf="@+id/gold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/winning"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/trophy"
+        android:contentDescription="@string/Stars"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/endTrophy"
+        app:layout_constraintEnd_toStartOf="@+id/gold"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/endTrophy"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="center_horizontal"
+        android:text="Achievements"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:autoSizeMaxTextSize="40dp"
+        app:autoSizeMinTextSize="20dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/winning"
+        app:layout_constraintEnd_toEndOf="@+id/winning"
+        app:layout_constraintStart_toStartOf="@+id/winning"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/silver"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:contentDescription="@string/Silver"
+        app:layout_constraintBottom_toTopOf="@+id/bronze"
+        app:layout_constraintEnd_toEndOf="@+id/gold"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gold"
+        app:layout_constraintTop_toBottomOf="@+id/gold"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/bronze"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:contentDescription="@string/Bronze"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/silver"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/silver"
+        app:layout_constraintTop_toBottomOf="@+id/silver"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/gold"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="20dp"
+        android:contentDescription="@string/Gold"
+        app:layout_constraintBottom_toTopOf="@+id/silver"
+        app:layout_constraintEnd_toStartOf="@+id/goldNumber"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/winning"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/goldNumber"
+        android:layout_width="75dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="center_horizontal"
+        android:textColor="#000000"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/gold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/gold"
+        app:layout_constraintTop_toTopOf="@+id/gold"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/silverNumber"
+        android:layout_width="75dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="center_horizontal"
+        android:textColor="#000000"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/silver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/silver"
+        app:layout_constraintTop_toTopOf="@+id/silver" />
+
+    <TextView
+        android:id="@+id/bronzeNumber"
+        android:layout_width="75dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/alfa_slab_one_two"
+        android:gravity="center_horizontal"
+        android:textColor="#000000"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/bronze"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/bronze"
+        app:layout_constraintStart_toEndOf="@+id/bronze"
+        app:layout_constraintTop_toTopOf="@+id/bronze" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
