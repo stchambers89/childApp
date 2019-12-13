@@ -80,7 +80,21 @@ public class GameScreenActivity extends AppCompatActivity {
         } else {*/
         super.onCreate(savedInstanceState);
         getGameMode();
-        game = new Game(gameMode);
+
+        if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
+            //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
+            //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
+            game = (Game) intent.getParcelableExtra("name_of_extra");
+
+            Log.i(TAG, "game created via parcelable");
+
+        } else {
+            game = new Game(gameMode);
+            game.set_round(1);
+            game.set_score(0);
+            Log.i(TAG, "score set");
+        }
+
         Log.i(TAG, "game instantiated");
 
 
@@ -116,12 +130,12 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
         /************ GET ROUND & SCORE ********************/
-        game.set_round(1);
+        //game.set_round(1);
 
         // BASE CASE
         if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
-            round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
-            score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
+            //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
+            //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
             matches = intent.getIntExtra(GameScreenActivity.MATCHES, 0);
             //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
             //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
@@ -407,8 +421,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
                         Log.i("ROUND:", "ROUND BEFORE INTENT IS CREATED: " + String.valueOf(game.get_round()));
                         Intent intent = getIntent();
-                        intent.putExtra(ROUND, round);
-                        intent.putExtra(SCORE, score);
+                        //intent.putExtra(ROUND, round);
+                        //intent.putExtra(SCORE, score);
 
                         intent.putExtra(MATCHES, (firstTry) ? ++matches : matches);
 
@@ -436,7 +450,6 @@ public class GameScreenActivity extends AppCompatActivity {
                     }
                     else {
                         // We don't have a match
-                        score -= 10;
                         firstTry = false;
                         game.set_score(game.get_score() - 10);
                         TextView cScore = findViewById(R.id.currentScore);
@@ -513,7 +526,6 @@ public class GameScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EndingScreenActivity.class);
 
         intent.putExtra(SCORE, game.get_score());
-        intent.putExtra(SCORE, score);
         intent.putExtra(MATCHES, matches);
 
         startActivity(intent);
