@@ -85,6 +85,7 @@ public class GameScreenActivity extends AppCompatActivity {
             //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
             //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
             game = (Game) intent.getParcelableExtra("name_of_extra");
+            matches = intent.getIntExtra(GameScreenActivity.MATCHES, 0);
 
             Log.i(TAG, "game created via parcelable");
 
@@ -132,21 +133,6 @@ public class GameScreenActivity extends AppCompatActivity {
         /************ GET ROUND & SCORE ********************/
         //game.set_round(1);
 
-        // BASE CASE
-        if (intent.getIntExtra(GameScreenActivity.ROUND, 1) != 1) {
-            //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
-            //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
-            matches = intent.getIntExtra(GameScreenActivity.MATCHES, 0);
-            //round = intent.getIntExtra(GameScreenActivity.ROUND, 1);
-            //score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
-            game = (Game) intent.getParcelableExtra("name_of_extra");
-
-            Log.i(TAG, "game created via parcelable");
-
-        } else {
-            game.set_score(0);
-            Log.i(TAG, "score set");
-        }
 
         /************* CHECK FOR DATA FROM INSTANCE STATE *****************/
         if (savedInstanceState != null) {
