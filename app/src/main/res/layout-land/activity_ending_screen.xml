@@ -24,7 +24,7 @@
 
     <ImageView
         android:id="@+id/winning"
-        android:layout_width="351dp"
+        android:layout_width="300dp"
         android:layout_height="200dp"
         android:contentDescription="@string/Stars"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/endScore"
-        android:layout_width="351dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/alfa_slab_one_two"
@@ -46,22 +46,20 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/winning"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/winning"
         app:layout_constraintTop_toBottomOf="@+id/winning" />
 
     <TextView
         android:id="@+id/endTrophy"
-        android:layout_width="351dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/winning"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/winning"
+        app:layout_constraintStart_toStartOf="@+id/winning"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -90,9 +88,9 @@
 
     <ImageView
         android:id="@+id/gold"
-        android:layout_width="0dp"
+        android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="20dp"
         android:contentDescription="@string/Gold"
         app:layout_constraintBottom_toTopOf="@+id/silver"
         app:layout_constraintEnd_toStartOf="@+id/goldNumber"
@@ -105,7 +103,6 @@
         android:id="@+id/goldNumber"
         android:layout_width="75dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="50dp"
         android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
         android:textColor="#000000"
@@ -126,6 +123,7 @@
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@+id/silver"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/silver"
         app:layout_constraintTop_toTopOf="@+id/silver" />
 
@@ -138,6 +136,7 @@
         android:textColor="#000000"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@+id/bronze"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/bronze"
         app:layout_constraintStart_toEndOf="@+id/bronze"
         app:layout_constraintTop_toTopOf="@+id/bronze" />

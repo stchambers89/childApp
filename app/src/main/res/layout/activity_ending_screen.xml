@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/endScore"
-        android:layout_width="351dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
@@ -50,7 +50,7 @@
 
     <TextView
         android:id="@+id/endTrophy"
-        android:layout_width="351dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:fontFamily="@font/alfa_slab_one_two"
         android:gravity="center_horizontal"
