@@ -25,7 +25,7 @@
     <ImageView
         android:id="@+id/winning"
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:background="@drawable/trophy"
         android:contentDescription="@string/Stars"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,8 @@
         app:layout_constraintEnd_toStartOf="@+id/gold"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
 
     <TextView
         android:id="@+id/endTrophy"
