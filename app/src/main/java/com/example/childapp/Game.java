@@ -6,6 +6,9 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* Game 
+*/
 public class Game implements Parcelable {
 
     private Integer _gameMode;
@@ -13,6 +16,9 @@ public class Game implements Parcelable {
     private Integer _round;
     private Integer _score;
 
+    /**
+    *
+    */
     protected Game(Parcel in) {
 
         _gameMode = in.readInt();
@@ -22,6 +28,9 @@ public class Game implements Parcelable {
         _score = in.readInt();
     }
 
+    /**
+    *
+    */
     public Game(Integer gameMode) {
 
         _gameMode = gameMode;
@@ -41,7 +50,9 @@ public class Game implements Parcelable {
         dest.writeInt(_score);
     }
 
-    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    /**
+    *
+    */
     public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {
         public Game createFromParcel(Parcel in) {
             return new Game(in);
@@ -52,6 +63,7 @@ public class Game implements Parcelable {
         }
     };
 
+    // Getters and Setters
     public void set_gameMode(Integer _gameMode) {
         this._gameMode = _gameMode;
     }
