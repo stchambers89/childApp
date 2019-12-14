@@ -245,6 +245,8 @@ public class GameScreenActivity extends AppCompatActivity {
                     else {
                         // We don't have a match
                         matchStreak = 0;
+                        editor.putInt("matches", matchStreak);
+                        editor.apply();
                         game.set_score(game.get_score() - 10);
                         TextView cScore = findViewById(R.id.currentScore);
                         cScore.setText("Score: " + game.get_score());
