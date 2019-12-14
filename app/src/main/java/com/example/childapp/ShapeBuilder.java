@@ -23,7 +23,6 @@ public class ShapeBuilder {
 
     // private member variables
     private int order;
-    private String color;
     private List<Shape> shapes = new ArrayList<Shape>();
 
     private static final String TAG = "ShapeFactory";
@@ -31,11 +30,6 @@ public class ShapeBuilder {
     // NON-DEFAULT CONSTRUCTOR
     public ShapeBuilder(int order) {
         this.order = order;
-    }
-
-    // List GETTER
-    public List<Shape> getList() {
-        return shapes;
     }
 
     /**
@@ -54,7 +48,6 @@ public class ShapeBuilder {
             } else {
                 if (isSecond) {
                     shape = getShapeCopy(list.get(0));
-                    //shape.changeShapeColor(getRandomColor());
                     list.add(shape);
                     isSecond = false;
                 } else {

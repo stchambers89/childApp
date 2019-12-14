@@ -67,7 +67,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@color/transparent"
-        android:onClick="runAcheivementPage"
+        android:onClick="runAchievementPage"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -47,9 +47,6 @@ public class AchievementPage extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        Intent intent = getIntent();
-
-
         sharedPref = getSharedPreferences("achievement_file", MODE_PRIVATE);
 
         bronzeTrophies = sharedPref.getInt("bronzeCount",0);
@@ -66,13 +63,11 @@ public class AchievementPage extends AppCompatActivity {
         ImageView silver = (ImageView) findViewById(R.id.silver);
         ImageView gold = (ImageView) findViewById(R.id.gold);
         ImageView current = (ImageView) findViewById(R.id.winning);
+
         bronzeNum = findViewById(R.id.bronzeNumber);
         silverNum = findViewById(R.id.silverNumber);
         goldNum = findViewById(R.id.goldNumber);
         matches = findViewById(R.id.matches);
-
-
-
 
         bronze.setImageDrawable(getResources().getDrawable(R.drawable.star));
         silver.setImageDrawable(getResources().getDrawable(R.drawable.star));

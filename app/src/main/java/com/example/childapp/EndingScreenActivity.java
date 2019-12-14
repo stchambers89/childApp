@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -15,7 +14,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 /**
  * Activity that shows the user's score and achievement
