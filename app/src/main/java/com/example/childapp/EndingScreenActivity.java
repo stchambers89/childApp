@@ -53,9 +53,6 @@ public class EndingScreenActivity extends AppCompatActivity {
         Intent intent = getIntent();
         score = intent.getIntExtra(GameScreenActivity.SCORE, 0);
 
-        int matchesOnFirstTry = intent.getIntExtra(GameScreenActivity.MATCHES, 0);
-
-
         sharedPref = getSharedPreferences("achievement_file", MODE_PRIVATE);
 
         bronzeTrophies = sharedPref.getInt("bronzeCount",0);
@@ -120,8 +117,6 @@ public class EndingScreenActivity extends AppCompatActivity {
         goldNum.setText(String.valueOf(goldTrophies));
 
         editor = sharedPref.edit();
-
-        editor.putInt("firstTries", sharedPref.getInt("firstTries",0) + matchesOnFirstTry);
 
         switch (level) {
             case 3:

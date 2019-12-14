@@ -23,9 +23,10 @@ public class AchievementPage extends AppCompatActivity {
     private int goldTrophies;
     private int silverTrophies;
     private int bronzeTrophies;
-    private int firstTryMatches;
+    private int matchStreak;
     static int level;
     SharedPreferences sharedPref;
+    SharedPreferences prefs;
     SharedPreferences.Editor editor;
     private TextView bronzeNum;
     private TextView silverNum;
@@ -48,12 +49,13 @@ public class AchievementPage extends AppCompatActivity {
         int height = dm.heightPixels;
 
         sharedPref = getSharedPreferences("achievement_file", MODE_PRIVATE);
+        prefs = getApplicationContext().getSharedPreferences("highScore", MODE_PRIVATE);
 
         bronzeTrophies = sharedPref.getInt("bronzeCount",0);
         silverTrophies = sharedPref.getInt("silverCount",0);
         goldTrophies = sharedPref.getInt("goldCount",0);
 
-        firstTryMatches = sharedPref.getInt("firstTries",0);
+        matchStreak = prefs.getInt("matches",0);
 
         Log.i("Gold Trophies",String.valueOf(goldTrophies));
         Log.i("Silver Trophies",String.valueOf(silverTrophies));
@@ -81,7 +83,7 @@ public class AchievementPage extends AppCompatActivity {
         bronzeNum.setText(String.valueOf(bronzeTrophies));
         silverNum.setText(String.valueOf(silverTrophies));
         goldNum.setText(String.valueOf(goldTrophies));
-        matches.setText("Matches On 1st Try: " + String.valueOf(firstTryMatches));
+        matches.setText("Current Streak: " + String.valueOf(matchStreak));
         editor = sharedPref.edit();
 
         switch (level) {
