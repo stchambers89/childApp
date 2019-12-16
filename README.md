@@ -15,3 +15,5 @@ There are 3 game modes:
 Each game consists of 10 rounds where the user drags the correct oject toward the top of
 the screen. After 10 rounds your final score is displayed along with a bronze, silver, 
 or gold star.  
+
+Take a tour of the app by clicking on <a href="https://www.youtube.com/watch?v=mIVcXOBPYDM&feature=youtu.be">this link</a>.
